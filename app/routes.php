@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('hello');
-});
+//Gellery
+Route::get('/', array('as' => 'gallery_index', 'uses' => 'GalleryController@index'));
+
+//User
+Route::get('/register', array('as' => 'user_register', 'uses' => 'UserController@register'));
+Route::post('/register', array('as' => 'user_register_post', 'uses' => 'UserController@register'));
