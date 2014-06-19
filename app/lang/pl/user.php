@@ -6,6 +6,7 @@ return array(
     'message_register'  => 'Rejestracja użytkownika',
     
     'label_login'   => 'Login',
+    'label_password'   => 'Hasło',
     
     'button_register'   => 'Zarejstruj'
 );
