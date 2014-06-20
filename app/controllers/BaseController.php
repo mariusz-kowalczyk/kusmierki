@@ -17,7 +17,11 @@ class BaseController extends Controller {
     
     function __construct() {
         $this->setup();
-        $this->view = View::make($this->view_name);
+        try {
+            $this->view = View::make($this->view_name);
+        }catch(InvalidArgumentException $err) {
+            
+        }
     }
     
     protected function setup() {
@@ -27,6 +31,9 @@ class BaseController extends Controller {
         $tmp = lcfirst($this->model_name);
         $v1 = strtolower(preg_replace('/[[:upper:]]/', '-$0', $tmp));
         $v2 = strtolower(preg_replace('/[[:upper:]]/', '-$0', $this->action_name));
+        if(substr($v2, 0, 3) == 'do-') {
+            $v2 = substr($v2, 3);
+        }
         $this->view_name = $v1 . '.' . $v2;
         $this->model_lc_name = str_replace('-', '_', $v1);
         $this->action_lc_name = str_replace('-', '_', $v2);

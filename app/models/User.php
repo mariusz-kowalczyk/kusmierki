@@ -32,12 +32,13 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     protected $fillable = array('login', 'password', 'email', 'firstname', 'lastname', 'birthday');
     
     public static $rules = array(
-        'login'         => 'required|exists:users',
+        'login'         => 'required|unique:users',
         'password'      => 'required',
+        'password_confirm'  => 'same:password',
         'email'         => 'email',
         'firstname'     => 'required',
         'lastname'      => 'required',
-        'birtday'       => 'date'
+        'birthday'       => 'date'
     );
 
 }

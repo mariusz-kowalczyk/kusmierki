@@ -16,4 +16,7 @@ Route::get('/', array('as' => 'gallery_index', 'uses' => 'GalleryController@inde
 
 //User
 Route::get('/register', array('as' => 'user_register', 'uses' => 'UserController@register'));
-Route::post('/register', array('as' => 'user_register_post', 'uses' => 'UserController@register'));
+Route::post('/register', array('as' => 'user_do_register', 'uses' => 'UserController@register'));
+Route::get('/login', array('as' => 'user_login', 'uses' => 'UserController@login'));
+Route::post('/login', array('as' => 'user_do_login', 'uses' => 'UserController@doLogin'));
+Route::get('/logout', array('as' => 'user_logout', 'uses' => 'UserController@logout'));

@@ -26,31 +26,50 @@
   </head>
   <body>
     <div class="wrap">
-        <header id="header">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div id="banner">
-                            <a href="{{ route('gallery_index') }}">
-                                <h1>Kuśmierki</h1>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <nav id="top-menu" >
-                            <a href="{{ route('gallery_index') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_gallery') }}</a>
-                            <a href="{{ route('user_register') }}" class="btn btn-lg btn-success">{{ Lang::get('common.nav_register') }}</a>
-                        </nav>
-                    </div>
-                </div>
-            </div>
-        </header>
         <div class="container">
+            @if(Session::has('notice'))
+            <div class="messages">
+                <p class="alert alert-success">{{ Session::get('notice') }}</p>
+            </div>
+            @endif
+            @if(Session::has('error'))
+            <div class="messages">
+                <p class="alert alert-danger">{{ Session::get('error') }}</p>
+            </div>
+            @endif
+            @if(Session::has('info'))
+            <div class="messages">
+                <p class="alert alert-info">{{ Session::get('info') }}</p>
+            </div>
+            @endif
             <div id="content">
                 {{ $content }}
             </div>
         </div>
     </div>
-    
+    <header id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="banner">
+                        <a href="{{ route('gallery_index') }}">
+                            <h1>Kuśmierki</h1>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <nav id="top-menu" >
+                        <a href="{{ route('gallery_index') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_gallery') }}</a>
+                        @if(Auth::check())
+                        <a href="{{ route('user_logout') }}" class="btn btn-lg btn-danger">{{ Lang::get('common.nav_logout') }}</a>
+                        @else
+                        <a href="{{ route('user_register') }}" class="btn btn-lg btn-success">{{ Lang::get('common.nav_register') }}</a>
+                        <a href="{{ route('user_login') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_login') }}</a>
+                        @endif
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
   </body>
 </html>

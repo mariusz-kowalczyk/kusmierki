@@ -16,9 +16,19 @@ Blade::extend(function($view, $compiler)
                     $conds = explode('|', $rules[$field]);
                     $ret = array();
                     foreach($conds as $cond) {
-                        switch ($cond) {
+                        $attributes = explode(':', $cond);
+                        switch ($attributes[0]) {
                             case 'required' :
                                 $ret[] = 'required';
+                                break;
+                            case 'same' :
+                                $ret[] = 'equals[' . $attributes[1] . ']';
+                                break;
+                            case 'email' :
+                                $ret[] = 'custom[email]';
+                                break;
+                            case 'date' :
+                                $ret[] = 'custom[date]';
                                 break;
                         }
                     }

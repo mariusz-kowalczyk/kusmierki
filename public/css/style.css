@@ -23,6 +23,7 @@
 #banner a {
     color: #FFFFFF;
     text-decoration: none;
+    z-index: 1000;
 }
 
 body > div.wrap {
@@ -62,6 +63,55 @@ body > div.wrap {
     }
 }
 
+@media (max-width: 600px) {
+    #banner {
+        display: none;
+    }
+    
+    #header {
+        height: 70px;
+    }
+    
+    #top-menu {
+        float: left;
+    }
+    
+    #top-menu .btn {
+        margin-bottom: 10px;
+    }
+    
+    body > div.wrap {
+        margin-top: 70px;
+    }
+    
+    .formError {
+        left: auto !important;
+        right: 0;
+    }
+}
+
+@media (max-width: 400px) {
+    #banner {
+        display: none;
+    }
+    
+    #header {
+        height: 130px;
+    }
+    
+    #top-menu {
+        float: left;
+    }
+    
+    #top-menu .btn {
+        margin-bottom: 10px;
+    }
+    
+    body > div.wrap {
+        margin-top: 130px;
+    }
+}
+
 h2 {
     background-color: #428bca;
     border-radius: 10px;
@@ -69,9 +119,10 @@ h2 {
     color: #fff;
     font-family: arial;
     font-size: 40px;
-    padding: 15px 40px;
+    padding: 11px 36px;
     text-shadow: 1px 1px 3px #92c6ff;
     margin-bottom: 40px;
+    border: 2px solid #2c7fc1;
 }
 
 @media (max-width: 767px) {
@@ -79,5 +130,9 @@ h2 {
         font-size: 30px;
         padding: 10px 20px;
     }
+}
+
+.messages {
+    margin-top: 10px;
 }
 
