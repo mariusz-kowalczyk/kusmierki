@@ -65,7 +65,7 @@
                         </select>
                         <span class="input-group-addon">-</span>
                         <select id="birthday-day" class="form-control">
-                            @for($d = 1; $d <= 12; $d++)
+                            @for($d = 1; $d <= 31; $d++)
                             <option value="{{ $d }}" @if(!empty($user) && date('d', strtotime($user->birthday)) == $d) selected="selected" @endif>{{ $d }}</option>
                             @endfor
                         </select>

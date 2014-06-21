@@ -21,6 +21,8 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
      * @var string
      */
     protected $table = 'users';
+    
+    public $timestamps = true;
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -41,4 +43,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
         'birthday'       => 'date'
     );
 
+    public function galleries() {
+        return $this->hasMany('Gallery');
+    }
 }

@@ -23,7 +23,9 @@ class CreateUsersTable extends Migration {
                         $table->date('birthday')->nullable();
                         $table->tinyInteger('role')->default(User::ROLE_USER);
                         $table->tinyInteger('status')->default(User::STATUS_INACTIVE);
+                        $table->string('remember_token');
 			$table->timestamps();
+                        $table->softDeletes();
 		});
 	}
 

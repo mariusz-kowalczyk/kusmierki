@@ -28,6 +28,12 @@ class UserController extends BaseController {
                 {
                     $message->to('m.kowalczyk44446@gmail.com', 'Admin')->subject('Nowy użytkownik!');
                 });
+                if(!empty($user->email)) {
+                    Mail::send('emails.register-welcome', array('user' => $user), function($message) use ($user)
+                    {
+                        $message->to($user->email, $user->firstname . ' ' . $user->lastname)->subject(Lang::get('user.message_welcome'));
+                    });
+                }
                 
                 return Redirect::route('user_login')->with('notice', Lang::get('user.messages_registered'));
             }

@@ -13,6 +13,7 @@
 
 //Gellery
 Route::get('/', array('as' => 'gallery_index', 'uses' => 'GalleryController@index'));
+Route::post('/gallery-edit', array('as' => 'gallery_do_edit', 'uses' => 'GalleryController@doEdit'));
 
 //User
 Route::get('/register', array('as' => 'user_register', 'uses' => 'UserController@register'));

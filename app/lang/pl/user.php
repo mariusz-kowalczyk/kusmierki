@@ -12,6 +12,7 @@ return array(
     'message_invalid_login_or_password' => 'Niepoprawny login lub hasło',
     'message_your_account_is_not_activated' => 'Twoje konto nie zostało jeszcze aktywowane',
     'messages_you_was_logout' => 'Zostałeś wylogowany',
+    'message_welcome' => 'Witaj w serwisie',
     
     'label_login'   => 'Login',
     'label_password'   => 'Hasło',
