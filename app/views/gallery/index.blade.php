@@ -1,12 +1,49 @@
-<h2>{{ Lang::get('gallery.message_index') }}</h2>
+@if($gallery)
+<br/>
+<ol class="breadcrumb">
+    <li><a href="{{ route('gallery_index') }}">{{ Lang::get('gallery.label_root') }}</a></li>
+    @for($i = count($breadcrumb) -1; $i >= 0; $i--)
+    <li><a href="{{ route('gallery_index', array('gallery' => $breadcrumb[$i]->id)) }}">{{ $breadcrumb[$i]->name }}</a></li>
+    @endfor
+    <li class="active">{{ $gallery->name }}</li>
+</ol>
+@endif
 
-<hr/>
+@if($edit || isset($galleries[0]))
+<h3>{{ Lang::get('gallery.message_index') }}</h3>
 
+<div class="galleries-list">
+    @foreach($galleries as $g) 
+    <div class="gallery-el pull-left">
+        <a href="{{ route('gallery_index', array('parent_id' => $g->id)) }}">
+            <div class="thumbnail">
+                <img src="/images/gallery-icons/{{ $g->icone }}/128.png" class="img-responsive" alt="Folder blue pictures Icon">
+                <div class="caption">
+                    <span class="name">{{ $g->name }}</span>
+                </div>
+            </div>
+        </a>
+    </div>
+    @endforeach
+    <div class="clearfix"></div>
+</div>
+@endif
+
+@if($edit)
 <div class="new-gallery">
     <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#newGalleryModal">{{ Lang::get('gallery.button_new') }}</button>
 </div>
+@endif
 
+@if(!empty($gallery))
+@if($edit || isset($galleries[0]))
+<hr/>
+@endif
 
+<h3>{{ Lang::get('gallery.message_images') }}</h3>
+@endif
+
+@if($edit)
 <!-- Modal -->
 <div class="modal fade" id="newGalleryModal" tabindex="-1" role="dialog" aria-labelledby="newGalleryLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -27,6 +64,7 @@
     </div>
   </div>
 </div>
+@endif
 
 <script type="text/javascript">
     $(function() {

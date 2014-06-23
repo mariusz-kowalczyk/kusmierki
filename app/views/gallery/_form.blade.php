@@ -1,14 +1,17 @@
+@if($gallery)
+<input type="hidden" name="gallery[parent_id]" value="{{ $gallery->id }}"/>
+@endif
 
 <div class="form-group ">
     <label class="control-label col-md-3" for="gallery-name" >{{ Lang::get('gallery.label_name') }}</label>
     <div class="col-md-9">
-        <input type="text" name="gallery[name]" value="{{ $gallery->name or '' }}" placeholder="{{ Lang::get('gallery.label_name') }}" class="form-control @validate(gallery|name)" id="gallery-name" />
+        <input type="text" name="gallery[name]" value="{{ $new_gallery->name or '' }}" placeholder="{{ Lang::get('gallery.label_name') }}" class="form-control @validate(gallery|name)" id="gallery-name" />
     </div>
 </div>
 <div class="form-group ">
     <label class="control-label col-md-3" for="gallery-description" >{{ Lang::get('gallery.label_description') }}</label>
     <div class="col-md-9">
-        <textarea name="gallery[description]" placeholder="{{ Lang::get('gallery.label_description') }}" class="form-control @validate(gallery|description)" id="gallery-description" >{{ $gallery->description or '' }}</textarea>
+        <textarea name="gallery[description]" placeholder="{{ Lang::get('gallery.label_description') }}" class="form-control @validate(gallery|description)" id="gallery-description" >{{ $new_gallery->description or '' }}</textarea>
     </div>
 </div>
 <div class="form-group ">

@@ -7,8 +7,32 @@
  */
 class GalleryController extends BaseController {
 
-    public function index($parent = null) {
+    public function index($gallery = null) {
+        if(!empty($gallery)) {
+            $query = Gallery::where('parent_id', '=', $gallery->id);
+        }else {
+            $query = Gallery::whereNull('parent_id');
+        }
+        $galleries = $query->get();
         
+        $breadcrumb = array();
+        $item = $gallery;
+        while($item && $item->parent_id) {
+            $item = $item->parent;
+            $breadcrumb[] = $item;
+        }
+        
+        $edit = true;
+        if(!Auth::check()) {
+            $edit = false;
+        }
+        
+        $this->view
+                ->with('galleries', $galleries)
+                ->with('gallery', $gallery)
+                ->with('breadcrumb', $breadcrumb)
+                ->with('edit', $edit)
+            ;
     }
     
     public function doEdit() {
@@ -20,9 +44,9 @@ class GalleryController extends BaseController {
         if(!$validator->fails()) {
             $gallery->user_id = Auth::id();
             $gallery->save();
-            return Redirect::route('gallery_index')->with('notice', Lang::get('gallery.messages_saved'));
+            return Redirect::route('gallery_index', array('parent_id' => $gallery->parent_id))->with('notice', Lang::get('gallery.messages_saved'));
         }else {
-            return Redirect::route('gallery_index')->with('error', Lang::get($validator->messages()));
+            return Redirect::route('gallery_index', array('parent_id' => $gallery->parent_id))->with('error', Lang::get($validator->messages()));
         }        
     }
 }
