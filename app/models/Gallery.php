@@ -26,6 +26,10 @@ class Gallery extends BaseModel {
         return $this->hasMany('Gallery');
     }
     
+    public function images() {
+        return $this->hasMany('Image');
+    }
+
     public function user() {
         return $this->belongsTo('User');
     }

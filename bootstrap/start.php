@@ -23,12 +23,32 @@ $app = new Illuminate\Foundation\Application;
 | given environment, then we will automatically detect it for you.
 |
 */
-
+/*
 $env = $app->detectEnvironment(array(
 
 	'local' => array('homestead'),
 
-));
+));*/
+
+$env = $app->detectEnvironment(function()
+{
+    if(empty($_SERVER['SERVER_ADDR'])) {
+        return 'dev';
+        //return 'prod';
+    }else {
+        switch ($_SERVER['SERVER_ADDR']) {
+            case '127.0.1.1' :
+                return 'dev';
+                break;
+            case '192.168.1.195' :
+                return 'prod';
+                break;
+            default :
+                echo $_SERVER['SERVER_ADDR'];
+                die;
+        }
+    }
+});
 
 /*
 |--------------------------------------------------------------------------

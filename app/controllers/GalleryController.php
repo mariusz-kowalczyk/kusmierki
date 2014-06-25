@@ -22,6 +22,10 @@ class GalleryController extends BaseController {
             $breadcrumb[] = $item;
         }
         
+        $images = array();
+        if($gallery) {
+            $images = $gallery->images;
+        }
         $edit = true;
         if(!Auth::check()) {
             $edit = false;
@@ -32,6 +36,8 @@ class GalleryController extends BaseController {
                 ->with('gallery', $gallery)
                 ->with('breadcrumb', $breadcrumb)
                 ->with('edit', $edit)
+                ->with('images', $images)
+                ->with('image_url', Config::get('app.images_url'))
             ;
     }
     

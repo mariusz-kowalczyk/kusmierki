@@ -13,7 +13,7 @@
 
 //Gellery
 Route::model('gallery', 'Gallery');
-Route::get('/gallery/{gallery?}', array('as' => 'gallery_index', 'uses' => 'GalleryController@index'));
+Route::get('/{gallery?}', array('as' => 'gallery_index', 'uses' => 'GalleryController@index'))->where('gallery', '\d+');
 Route::post('/gallery-edit', array('as' => 'gallery_do_edit', 'uses' => 'GalleryController@doEdit'));
 
 //User
@@ -22,3 +22,6 @@ Route::post('/register', array('as' => 'user_do_register', 'uses' => 'UserContro
 Route::get('/login', array('as' => 'user_login', 'uses' => 'UserController@login'));
 Route::post('/login', array('as' => 'user_do_login', 'uses' => 'UserController@doLogin'));
 Route::get('/logout', array('as' => 'user_logout', 'uses' => 'UserController@logout'));
+
+//Image
+Route::post('/image/upload/{gallery}', array('as' => 'image_upload', 'uses' => 'ImageController@upload'));

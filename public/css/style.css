@@ -161,3 +161,17 @@ h3 {
 .galleries-list .gallery-el a {
     text-decoration: none;
 }
+
+.images-list .image-el {
+    margin-right: 10px;    
+}
+
+.images-list .image-el .caption {
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Arial';
+}
+
+.images-list .image-el a {
+    text-decoration: none;
+}

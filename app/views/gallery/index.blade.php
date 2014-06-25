@@ -39,8 +39,7 @@
 @if($edit || isset($galleries[0]))
 <hr/>
 @endif
-
-<h3>{{ Lang::get('gallery.message_images') }}</h3>
+@include('gallery._images')
 @endif
 
 @if($edit)
@@ -64,14 +63,13 @@
     </div>
   </div>
 </div>
-@endif
 
+<script src="/js/models/gallery.js" type="text/javascript"></script>
 <script type="text/javascript">
-    $(function() {
-        $('#save-new-gallery').click(function() {
-           if($('#new-gallary-form').validationEngine('validate')) {
-               $('#new-gallary-form').submit();
-           }
-        });
+    @if($gallery)
+    Gallery.initUploader({
+        uploadUrl: '{{ route('image_upload', array('gallery' => $gallery->id)) }}'
     });
+    @endif
 </script>
+@endif

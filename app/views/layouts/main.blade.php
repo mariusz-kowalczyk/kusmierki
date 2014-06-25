@@ -23,6 +23,9 @@
     <script src="/libs/Validation-Engine/js/languages/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
     <script src="/libs/Validation-Engine/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
     <link rel="stylesheet" href="/libs/Validation-Engine/css/validationEngine.jquery.css" type="text/css"/>
+    <!-- plupload -->
+    <script src="/libs/plupload/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="/libs/plupload/i18n/pl.js" type="text/javascript" charset="utf-8"></script>
   </head>
   <body>
     <div class="wrap">
