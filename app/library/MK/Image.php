@@ -10,17 +10,18 @@ namespace MK;
 class Image {
     
     public static function resize($file, $ext, $max_width, $max_height) {
+        $ext = strtolower($ext);
         $size = getimagesize($file);
         $width = $size['0'];
         $height = $size['1'];
         
-        if($width / $max_width < $height / $max_height) {
-            $scale = $width / $max_width;
+        if($max_width / $width < $max_height / $height) {
+            $scale = $max_width / $width;
         }else {
-            $scale = $height / $max_height;
+            $scale = $max_height / $height;
         }
-        $new_width = $width / $scale;
-        $new_height = $height / $scale;
+        $new_width = $width * $scale;
+        $new_height = $height * $scale;
 
         switch ($ext) {
             case "gif":
