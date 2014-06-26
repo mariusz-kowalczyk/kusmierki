@@ -1,7 +1,10 @@
 $(function() {
     $('#save-new-gallery').click(function() {
-       if($('#new-gallary-form').validationEngine('validate')) {
-           $('#new-gallary-form').submit();
+        $('#new-gallary-form').submit();
+    });
+    $('#new-gallary-form').submit(function() {
+       if(!$(this).validationEngine('validate')) {
+           return false;
        }
     });
     

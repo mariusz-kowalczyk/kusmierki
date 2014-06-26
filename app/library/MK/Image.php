@@ -14,7 +14,9 @@ class Image {
         $size = getimagesize($file);
         $width = $size['0'];
         $height = $size['1'];
-        
+        if($width <= $max_width && $height <= $max_height) {
+            return;
+        }
         if($max_width / $width < $max_height / $height) {
             $scale = $max_width / $width;
         }else {
