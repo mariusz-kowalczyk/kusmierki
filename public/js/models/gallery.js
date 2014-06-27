@@ -73,7 +73,11 @@ Gallery = {
                         var $div = $('#empty-image-el').clone();
                         $div.removeAttr('id').insertBefore('#empty-image-el');
                         var base_url = $div.find('a').attr('href');
-                        $div.find('a').attr('href', base_url + image.id + '/orginal').find('img').attr('src', base_url + image.id + '/128').attr('alt', image.name)
+                        $div.find('a')
+                                .attr('href', base_url + image.id + '/orginal')
+                                .attr('data-lightbox', 'gallery-' + image.gallery_id)
+                                .attr('data-title', image.name)
+                                .find('img').attr('src', base_url + image.id + '/128').attr('alt', image.name)
                                 .parents('.image-el').find('.name').html(image.name);
                         $div.show();
                     }else {

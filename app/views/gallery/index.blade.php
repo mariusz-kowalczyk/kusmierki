@@ -63,7 +63,6 @@
     </div>
   </div>
 </div>
-
 <script src="/js/models/gallery.js" type="text/javascript"></script>
 <script type="text/javascript">
     @if($gallery)
@@ -71,5 +70,26 @@
         uploadUrl: '{{ route('image_upload', array('gallery' => $gallery->id)) }}'
     });
     @endif
+    
+    $(function() {
+        context.init({
+            fadeSpeed: 100,
+            filter: function ($obj){},
+            above: 'auto',
+            preventDoubleContext: true,
+            compress: false
+        });
+        context.attach('.gallery-el', [
+            {header: 'Menu'},
+            {text: 'View', action: function() {
+                    alert('aaa');
+            }},
+            {text: 'Edit', href: '#'},
+            {divider: true},
+            {text: 'Copy', href: '#'},
+            {text: 'Cut', href: '#'},
+            {text: 'Delete', href: '#'}
+            ]); 
+    });
 </script>
 @endif

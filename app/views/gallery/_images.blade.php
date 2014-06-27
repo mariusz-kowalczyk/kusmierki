@@ -37,7 +37,7 @@
 <div class="images-list">
     @foreach($images as $img) 
     <div class="image-el pull-left">
-        <a href="{{ $image_url . $img->id . '/orginal' }}" target="_blank">
+        <a href="{{ $image_url . $img->id . '/800' }}" data-lightbox="gallery-{{ $img->gallery_id }}" data-title="{{ $img->name }}">
             <div class="thumbnail">
                 <img src="{{ $image_url . $img->id . '/128' }}" class="img-responsive" alt="{{ $img->name }}">
                 <div class="caption">
@@ -48,7 +48,7 @@
     </div>
     @endforeach
     <div class="image-el pull-left" id="empty-image-el" style="display: none;">
-        <a href="{{ $image_url }}" target="_blank">
+        <a href="{{ $image_url }}" data-lightbox="" data-title="">
             <div class="thumbnail">
                 <img src="{{ $image_url }}" class="img-responsive" alt="">
                 <div class="caption">

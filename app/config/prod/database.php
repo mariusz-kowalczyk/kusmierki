@@ -25,7 +25,7 @@ return array(
 			'host'      => 'localhost',
 			'database'  => 'prod_kusmierki',
 			'username'  => 'root',
-			'password'  => '44446',
+			'password'  => 'mariusz44446',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',

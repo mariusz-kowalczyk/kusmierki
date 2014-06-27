@@ -32,21 +32,16 @@ $env = $app->detectEnvironment(array(
 
 $env = $app->detectEnvironment(function()
 {
-    if(empty($_SERVER['SERVER_ADDR'])) {
-        return 'dev';
-        //return 'prod';
-    }else {
-        switch ($_SERVER['SERVER_ADDR']) {
-            case '127.0.1.1' :
-                return 'dev';
-                break;
-            case '192.168.1.195' :
-                return 'prod';
-                break;
-            default :
-                echo $_SERVER['SERVER_ADDR'];
-                die;
-        }
+    switch ($_SERVER['SERVER_SOFTWARE']) {
+        case 'Apache/2.4.9 (Ubuntu)' :
+            return 'dev';
+            break;
+        case 'Apache/2.2.22 (Debian)' :
+            return 'prod';
+            break;
+        default :
+            echo $_SERVER['SERVER_SOFTWARE'];
+            die;
     }
 });
 

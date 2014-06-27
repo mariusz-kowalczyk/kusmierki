@@ -26,6 +26,12 @@
     <!-- plupload -->
     <script src="/libs/plupload/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="/libs/plupload/i18n/pl.js" type="text/javascript" charset="utf-8"></script>
+    <!-- lightbox -->
+    <script src="/libs/lightbox/js/lightbox.min.js"></script>
+    <link href="libs/lightbox/css/lightbox.css" rel="stylesheet" />
+    <!-- context -->
+    <script src="/libs/context/context.js"></script>
+    <link href="libs/context/context.bootstrap.css" rel="stylesheet" />
   </head>
   <body>
     <div class="wrap">

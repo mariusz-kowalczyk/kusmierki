@@ -1,2 +1,4 @@
 /composer.lock
 /vendor/
+/public/upload/dev/images/
+/public/upload/
