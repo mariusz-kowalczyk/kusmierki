@@ -37,7 +37,7 @@
 <div class="images-list">
     @foreach($images as $img) 
     <div class="image-el pull-left">
-        <a href="{{ $image_url . $img->id . '/800' }}" data-lightbox="gallery-{{ $img->gallery_id }}" data-title="{{ $img->name }}">
+        <a href="{{ $image_url . $img->id . '/1024' }}" data-lightbox="gallery-{{ $img->gallery_id }}" data-title="{{ $img->name }}">
             <div class="thumbnail">
                 <img src="{{ $image_url . $img->id . '/128' }}" class="img-responsive" alt="{{ $img->name }}">
                 <div class="caption">

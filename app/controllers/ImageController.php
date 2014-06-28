@@ -25,11 +25,11 @@ class ImageController extends BaseController {
             copy($destinationPath . '/orginal', $destinationPath . '/32');
             copy($destinationPath . '/orginal', $destinationPath . '/64');
             copy($destinationPath . '/orginal', $destinationPath . '/128');
-            copy($destinationPath . '/orginal', $destinationPath . '/800');
+            copy($destinationPath . '/orginal', $destinationPath . '/1024');
             MK\Image::resize($destinationPath . '/32', $extension, 32, 32);
             MK\Image::resize($destinationPath . '/64', $extension, 64, 64);
             MK\Image::resize($destinationPath . '/128', $extension, 128, 128);
-            MK\Image::resize($destinationPath . '/128', $extension, 800, 600);
+            MK\Image::resize($destinationPath . '/1024', $extension, 1024, 800);
             
             return Response::json(array(
                 'success'   => true,
