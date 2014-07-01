@@ -5,7 +5,7 @@
  */
 
 var context = context || (function () {
-    
+        contextClickedSelector = {};
 	var options = {
 		fadeSpeed: 100,
 		filter: function ($obj) {
@@ -49,7 +49,8 @@ var context = context || (function () {
 	function buildMenu(data, id, subMenu) {
 		var subClass = (subMenu) ? ' dropdown-context-sub' : '',
 			compressed = options.compress ? ' compressed-context' : '',
-			$menu = $('<ul class="dropdown-menu dropdown-context' + subClass + compressed+'" id="dropdown-' + id + '"></ul>');
+                        dataContextId = (subMenu) ? '' : ' data-context-id="' + id + '"',
+			$menu = $('<ul class="dropdown-menu dropdown-context' + subClass + compressed+'" id="dropdown-' + id + '" ' + dataContextId + ' ></ul>');
         var i = 0, linkTarget = '';
         for(i; i<data.length; i++) {
         	if (typeof data[i].divider !== 'undefined') {
@@ -74,7 +75,17 @@ var context = context || (function () {
 						eventAction = data[i].action;
 					$sub.find('a').attr('id', actionID);
 					$('#' + actionID).addClass('context-event');
-					$(document).on('click', '#' + actionID, eventAction);
+					//$(document).on('click', '#' + actionID, eventAction);
+                                        (function(eventAction) {
+                                            $(document).on('click', '#' + actionID, function(e) {
+                                                var id = $(this).parents('ul[data-context-id]').attr('data-context-id');
+
+                                                var options = {
+                                                    selector: contextClickedSelector[id]
+                                                }
+                                                eventAction(e, options);
+                                            });
+                                        })(eventAction);
 				}
 				$menu.append($sub);
 				if (typeof data[i].subMenu != 'undefined') {
@@ -101,7 +112,8 @@ var context = context || (function () {
 		$(document).on('contextmenu', selector, function (e) {
 			e.preventDefault();
 			e.stopPropagation();
-			
+			contextClickedSelector[id] = this;
+                        
 			$('.dropdown-context:not(.dropdown-context-sub)').hide();
 			
 			$dd = $('#dropdown-' + id);

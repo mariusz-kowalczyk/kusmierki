@@ -14,7 +14,7 @@
 
 <div class="galleries-list">
     @foreach($galleries as $g) 
-    <div class="gallery-el pull-left">
+    <div class="gallery-el pull-left" data-gallery-id="{{ $g->id }}">
         <a href="{{ route('gallery_index', array('parent_id' => $g->id)) }}">
             <div class="thumbnail">
                 <img src="/images/gallery-icons/{{ $g->icone }}/128.png" class="img-responsive" alt="Folder blue pictures Icon">
@@ -63,9 +63,28 @@
     </div>
   </div>
 </div>
+<!-- Modal -->
+<div class="modal fade" id="editGalleryModal" tabindex="-1" role="dialog" aria-labelledby="editGalleryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="editGalleryLabel">{{ Lang::get('gallery.title_edit_gallery') }}</h4>
+      </div>
+      <div class="modal-body">
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ Lang::get('common.cancel') }}</button>
+        <button type="button" id="save-edit-gallery" class="btn btn-success">{{ Lang::get('common.save') }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endif
 <script src="/js/models/gallery.js" type="text/javascript"></script>
 <script type="text/javascript">
-    @if($gallery)
+    @if($gallery && $edit)
     Gallery.initUploader({
         uploadUrl: '{{ route('image_upload', array('gallery' => $gallery->id)) }}'
     });
@@ -80,16 +99,38 @@
             compress: false
         });
         context.attach('.gallery-el', [
-            {header: 'Menu'},
-            {text: 'View', action: function() {
-                    alert('aaa');
+            {header: '{{ trans('common.menu') }}'},
+            {text: '{{ trans('gallery.menu_show') }}', action: function(e, options) {
+                    location.href = $(options.selector).children('a').attr('href');
             }},
-            {text: 'Edit', href: '#'},
-            {divider: true},
-            {text: 'Copy', href: '#'},
-            {text: 'Cut', href: '#'},
-            {text: 'Delete', href: '#'}
+            @if($edit)
+            {divider: true},            
+            {text: '{{ trans('gallery.menu_edit') }}', action: function(e, options) {
+                  wait();
+                  $.ajax({
+                    url: '{{ route('gallery_edit') }}/' + $(options.selector).attr('data-gallery-id'),
+                    success: function(res) {
+                        unwait();
+                        $('#editGalleryModal .modal-body').html(res);
+                        $('#editGalleryModal').modal('show');
+                    }
+                  });
+            }},
+            {text: '{{ trans('gallery.menu_delete') }}', action: function(e, options) {
+                  wait();
+                  $.ajax({
+                    url: '{{ route('gallery_delete') }}/' + $(options.selector).attr('data-gallery-id'),
+                    success: function(res) {
+                        unwait();
+                        try {
+                            if(res.success) {
+                                $(options.selector).remove();
+                            }
+                        }catch(err) {}
+                    }
+                  });
+            }},
+            @endif
             ]); 
     });
 </script>
-@endif

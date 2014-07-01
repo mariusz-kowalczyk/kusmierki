@@ -1,11 +1,15 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 /**
  * Description of Gallery
  *
  * @author Mariusz Kowalczyk
  */
 class Gallery extends BaseModel {
+    
+    use SoftDeletingTrait;
     
     const VISIBILITY_PUBLIC = 1;
     const VISIBILITY_FOR_LOGGED = 2;

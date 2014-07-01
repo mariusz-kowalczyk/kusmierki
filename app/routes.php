@@ -14,7 +14,9 @@
 //Gellery
 Route::model('gallery', 'Gallery');
 Route::get('/{gallery?}', array('as' => 'gallery_index', 'uses' => 'GalleryController@index'))->where('gallery', '\d+');
-Route::post('/gallery-edit', array('as' => 'gallery_do_edit', 'uses' => 'GalleryController@doEdit'));
+Route::post('/gallery/edit', array('as' => 'gallery_do_edit', 'uses' => 'GalleryController@doEdit'));
+Route::get('/gallery/edit/{gallery?}', array('as' => 'gallery_edit', 'uses' => 'GalleryController@edit'))->where('gallery', '\d+');
+Route::get('/gallery/delete/{gallery?}', array('as' => 'gallery_delete', 'uses' => 'GalleryController@delete'))->where('gallery', '\d+');
 
 //User
 Route::get('/register', array('as' => 'user_register', 'uses' => 'UserController@register'));

@@ -45,13 +45,28 @@ class BaseController extends Controller {
      * @return void
      */
     protected function setupLayout() {
-        if (!is_null($this->layout)) {
-            $this->layout = View::make($this->layout);
+        if(Request::ajax()) {
+            $this->layout = $this->view;
+        }else {
+            if (!is_null($this->layout)) {
+                $this->layout = View::make($this->layout);
+            }
+            $this->layout->page = array(
+                'title' => Lang::get($this->model_lc_name . '.title_' . $this->action_lc_name)
+            );
+            $this->layout->content = $this->view;
         }
-        $this->layout->page = array(
-            'title' => Lang::get($this->model_lc_name . '.title_' . $this->action_lc_name)
-        );
-        $this->layout->content = $this->view;
+    }
+    
+    public function edit($item = null) {
+        $this->view->with($this->model_lc_name, $item);
+    }
+    
+    public function delete($item = null) {
+        $item->delete();
+        return Response::json(array(
+            'success'   => true
+        ));
     }
 
 }

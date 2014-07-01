@@ -42,13 +42,18 @@ class GalleryController extends BaseController {
     }
     
     public function doEdit() {
-        $gallery = new Gallery();
         $data = Input::get('gallery', array());
+        if(empty($data['id'])) {
+            $gallery = new Gallery();
+            $gallery->user_id = Auth::id();
+        }else {
+            $gallery = Gallery::find($data['id']);
+            unset($data['id']);
+        }
         $gallery->fill($data);
         
         $validator = Validator::make($data, Gallery::$rules);
         if(!$validator->fails()) {
-            $gallery->user_id = Auth::id();
             $gallery->save();
             return Redirect::route('gallery_index', array('parent_id' => $gallery->parent_id))->with('notice', Lang::get('gallery.messages_saved'));
         }else {

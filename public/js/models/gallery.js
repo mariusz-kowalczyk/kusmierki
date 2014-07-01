@@ -8,6 +8,15 @@ $(function() {
        }
     });
     
+    $('#save-edit-gallery').click(function() {
+        $('#edit-gallary-form').submit();
+    });
+    $('#editGalleryModal').on('submit', '#edit-gallary-form', function() {
+       if(!$(this).validationEngine('validate')) {
+           return false;
+       }
+    });
+    
 });
 
 var uploader;

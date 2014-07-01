@@ -7,31 +7,33 @@
     <title>{{ $page['title'] }}</title>
 
     <!-- Bootstrap -->
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    {{ HTML::style('css/bootstrap.min.css') }}
 
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     
-    <link href="/css/style.css" rel="stylesheet">
+    {{ HTML::style('css/style.css') }}
     
-    <script src="/js/jquery-1.11.1.min.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    {{ HTML::script('js/jquery-1.11.1.min.js') }}
+    {{ HTML::script('js/bootstrap.min.js') }}
+    
+    {{ HTML::script('js/functions.js') }}
     
     <!-- Validation Engine -->
-    <script src="/libs/Validation-Engine/js/languages/jquery.validationEngine-pl.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/libs/Validation-Engine/js/jquery.validationEngine.js" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="/libs/Validation-Engine/css/validationEngine.jquery.css" type="text/css"/>
+    {{ HTML::script('libs/Validation-Engine/js/languages/jquery.validationEngine-pl.js') }}
+    {{ HTML::script('libs/Validation-Engine/js/jquery.validationEngine.js') }}
+    {{ HTML::style('libs/Validation-Engine/css/validationEngine.jquery.css') }}
     <!-- plupload -->
-    <script src="/libs/plupload/plupload.full.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="/libs/plupload/i18n/pl.js" type="text/javascript" charset="utf-8"></script>
+    {{ HTML::script('libs/plupload/plupload.full.min.js') }}
+    {{ HTML::script('libs/plupload/i18n/pl.js') }}
     <!-- lightbox -->
-    <script src="/libs/lightbox/js/lightbox.min.js"></script>
-    <link href="libs/lightbox/css/lightbox.css" rel="stylesheet" />
+    {{ HTML::script('libs/lightbox/js/lightbox.min.js') }}
+    {{ HTML::style('libs/lightbox/css/lightbox.css') }}
     <!-- context -->
-    <script src="/libs/context/context.js"></script>
-    <link href="libs/context/context.bootstrap.css" rel="stylesheet" />
+    {{ HTML::script('libs/context/context.js') }}
+    {{ HTML::style('libs/context/context.standalone.css') }}
   </head>
   <body>
     <div class="wrap">

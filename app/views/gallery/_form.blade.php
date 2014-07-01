@@ -1,3 +1,5 @@
+<input type="hidden" name="gallery[id]" value="{{ $new_gallery->id or '' }}"/>
+
 @if($gallery)
 <input type="hidden" name="gallery[parent_id]" value="{{ $gallery->id }}"/>
 @endif

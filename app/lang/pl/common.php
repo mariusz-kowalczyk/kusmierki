@@ -8,5 +8,6 @@ return array(
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
+    'menu'  => 'Menu',
 ); 
 
