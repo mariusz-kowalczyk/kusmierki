@@ -27,4 +27,6 @@ Route::post('/login', array('as' => 'user_do_login', 'uses' => 'UserController@d
 Route::get('/logout', array('as' => 'user_logout', 'uses' => 'UserController@logout'));
 
 //Image
-Route::post('/image/upload/{gallery}', array('as' => 'image_upload', 'uses' => 'ImageController@upload'));
+Route::model('image', 'Image');
+Route::post('/image/upload/{gallery}', array('as' => 'image_upload', 'uses' => 'ImageController@upload'))->where('gallery', '\d+');
+Route::get('/image/download/{image?}', array('as' => 'image_download', 'uses' => 'ImageController@download'))->where('image', '\d+');

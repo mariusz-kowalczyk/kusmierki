@@ -108,13 +108,6 @@
     @endif
     
     $(function() {
-        context.init({
-            fadeSpeed: 100,
-            filter: function ($obj){},
-            above: 'auto',
-            preventDoubleContext: true,
-            compress: false
-        });
         context.attach('.gallery-el', [
             {header: '{{ trans('common.menu') }}'},
             {text: '{{ trans('gallery.menu_show') }}', action: function(e, options) {

@@ -36,7 +36,7 @@
 
 <div class="images-list">
     @foreach($images as $img) 
-    <div class="image-el pull-left">
+    <div class="image-el pull-left" data-image-id="{{ $img->id }}" >
         <a href="{{ $image_url . $img->id . '/1024' }}" data-lightbox="gallery-{{ $img->gallery_id }}" data-title="{{ $img->name }}">
             <div class="thumbnail">
                 <img src="{{ $image_url . $img->id . '/128' }}" class="img-responsive" alt="{{ $img->name }}">
@@ -59,3 +59,21 @@
     </div>
     <div class="clearfix"></div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        context.attach('.image-el', [
+            {header: '{{ trans('common.menu') }}'},
+            {text: '{{ trans('image.menu_show') }}', action: function(e, options) {
+                $(options.selector).children('a').trigger('click');
+            }},
+            {text: '{{ trans('image.menu_show_orginal') }}', action: function(e, options) {
+                var url = '{{ $image_url }}' + $(options.selector).attr('data-image-id') + '/orginal';
+                window.open(url,'_blank');
+            }},
+            {text: '{{ trans('image.menu_download') }}', action: function(e, options) {
+                location.href = '{{ route('image_download') }}/' + $(options.selector).attr('data-image-id');
+            }},
+        ]);
+    });
+</script>

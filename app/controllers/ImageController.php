@@ -43,4 +43,20 @@ class ImageController extends BaseController {
         }
     }
     
+    public function download($image = null) {
+        $ext = explode('.', $image->name);
+        $ext = end($ext);
+        $filename = Config::get('app.images_path') . $image->id . '/orginal';
+        header('Content-Type: image/' . strtolower($ext));
+        header('Content-Disposition: attachment; filename="' . $image->name . '"');
+        header('Content-Transfer-Encoding: binary');
+        header('Accept-Ranges: bytes');
+        
+        if(file_exists($filename)) {
+            echo file_get_contents($filename);
+        }
+        
+        die;
+    }
+    
 }
