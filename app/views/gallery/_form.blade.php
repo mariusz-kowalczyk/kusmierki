@@ -30,7 +30,7 @@
         <div class="checkbox">
             <input type="hidden" name="gallery[visibility]" value="{{ Gallery::VISIBILITY_FOR_LOGGED }}" />
             <label>
-                <input type="checkbox" checked="checked" name="gallery[visibility]" value="{{ Gallery::VISIBILITY_PUBLIC }}" id="gallery-visibility" />
+                <input type="checkbox" @if(empty($new_gallery) || $new_gallery->visibility == Gallery::VISIBILITY_PUBLIC)checked="checked" @endif name="gallery[visibility]" value="{{ Gallery::VISIBILITY_PUBLIC }}" id="gallery-visibility" />
                 {{ Lang::get('gallery.visibility_public') }}
             </label>
         </div>

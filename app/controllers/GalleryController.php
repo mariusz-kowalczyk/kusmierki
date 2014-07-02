@@ -13,6 +13,9 @@ class GalleryController extends BaseController {
         }else {
             $query = Gallery::whereNull('parent_id');
         }
+        if(!Auth::check()) {
+            $query->where('visibility', '=', Gallery::VISIBILITY_PUBLIC);
+        }
         $galleries = $query->get();
         
         $breadcrumb = array();

@@ -9,5 +9,9 @@ return array(
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
     'menu'  => 'Menu',
+    'close'  => 'Zamknij',
+    
+    'label_created_at'  => 'Data utworzenia',
+    'label_updated_at'  => 'Data ostatniej edycji',
 ); 
 

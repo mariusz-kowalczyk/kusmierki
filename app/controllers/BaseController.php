@@ -68,5 +68,9 @@ class BaseController extends Controller {
             'success'   => true
         ));
     }
+    
+    public function view($item = null) {
+        $this->view->with($this->model_lc_name, $item);
+    }
 
 }

@@ -82,6 +82,23 @@
   </div>
 </div>
 @endif
+<!-- Modal -->
+<div class="modal fade" id="viewGalleryModal" tabindex="-1" role="dialog" aria-labelledby="viewGalleryLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="viewGalleryLabel">{{ Lang::get('gallery.title_view_gallery') }}</h4>
+      </div>
+      <div class="modal-body">
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ Lang::get('common.close') }}</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script src="/js/models/gallery.js" type="text/javascript"></script>
 <script type="text/javascript">
     @if($gallery && $edit)
@@ -131,6 +148,18 @@
                   });
             }},
             @endif
+            {divider: true}, 
+            {text: '{{ trans('gallery.menu_view') }}', action: function(e, options) {
+                  wait();
+                  $.ajax({
+                    url: '{{ route('gallery_view') }}/' + $(options.selector).attr('data-gallery-id'),
+                    success: function(res) {
+                        unwait();
+                        $('#viewGalleryModal .modal-body').html(res);
+                        $('#viewGalleryModal').modal('show');
+                    }
+                  });
+            }}
             ]); 
     });
 </script>
