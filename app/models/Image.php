@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\SoftDeletingTrait;
+
 /**
  * Description of Image
  *
@@ -7,12 +9,13 @@
  */
 class Image extends BaseModel {
     
+    use SoftDeletingTrait;
+    
     protected $table = 'images';
     public $timestamps = true;
     protected $fillable = array('gallery_id', 'name', 'description');
     
     public static $rules = array(
-        'name'  => 'gallery_id',
         'name'  => 'required',
     );
     

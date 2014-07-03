@@ -13,5 +13,6 @@ return array(
     
     'label_created_at'  => 'Data utworzenia',
     'label_updated_at'  => 'Data ostatniej edycji',
+    'label_created_by'  => 'Dodane przez',
 ); 
 

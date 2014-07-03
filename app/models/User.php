@@ -46,4 +46,8 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     public function galleries() {
         return $this->hasMany('Gallery');
     }
+    
+    public function __toString() {
+        return $this->firstname . ' ' . $this->lastname;
+    }
 }

@@ -72,5 +72,44 @@ class BaseController extends Controller {
     public function view($item = null) {
         $this->view->with($this->model_lc_name, $item);
     }
+    
+    protected function preEditFill($data, $item = null) {
+        return $data;
+    }
+    
+    public function doEdit() {        
+        $data = Input::get($this->model_lc_name, array());
+        $model_name = $this->model_name;
+        if(empty($data['id'])) {
+            $item = new $model_name();
+        }else {
+            $item = $model_name::find($data['id']);
+            unset($data['id']);
+        }
+        $data = $this->preEditFill($data, $item);
+        $item->fill($data);
+        
+        $validator = Validator::make($data, $model_name::$rules); 
+        if(!$validator->fails()) {            
+            $item->save();
+            if(Request::ajax()) {
+                return Response::json(array(
+                    'success'   => true,
+                    $this->model_lc_name    => $item->toArray()
+                ));
+            }else {
+                return Redirect::route($this->model_lc_name . '_index')->with('notice', Lang::get('gallery.messages_saved'));
+            }
+        }else { 
+            if(Request::ajax()) {
+                return Response::json(array(
+                    'success'   => false,
+                    'message'    => $validator->messages()
+                ));
+            }else {
+                return Redirect::route($this->model_lc_name . '_index')->with('error', $validator->messages());
+            }
+        }        
+    }
 
 }

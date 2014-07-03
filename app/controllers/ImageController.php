@@ -59,4 +59,27 @@ class ImageController extends BaseController {
         die;
     }
     
+    /**
+     * 
+     * @param Image $image
+     */
+    public function edit($image = null) {
+        $this->view->with('image', $image);
+        $tmp = explode('.', $image->name);
+        $this->view->with('extension', end($tmp));
+        array_pop($tmp);
+        $this->view->with('name_part', implode('.', $tmp));
+    }
+    
+    /**
+     * 
+     * @param array $data
+     * @param Image $item
+     */
+    public function preEditFill($data, $item = null) {
+        $tmp = explode('.', $item->name);
+        $extension = end($tmp);
+        $data['name'] .= '.' . $extension;
+        return $data;
+    }
 }

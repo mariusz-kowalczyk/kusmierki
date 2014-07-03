@@ -9,4 +9,13 @@ return array(
     'menu_show' => 'Pokaż',
     'menu_show_orginal' => 'Pokaż orginał',
     'menu_download' => 'Pobierz',
+    'menu_edit' => 'Edytuj',
+    'menu_delete' => 'Usuń',
+    'menu_view' => 'Właściwości',
+    
+    'label_name'    => 'Nazwa',
+    'label_description'    => 'Opis',
+    
+    'title_edit_image'    => 'Edycja zdjęcia',
+    'title_view_image'    => 'Właściwości',
 );

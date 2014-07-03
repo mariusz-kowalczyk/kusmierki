@@ -60,6 +60,44 @@
     <div class="clearfix"></div>
 </div>
 
+@if($edit)
+<!-- Modal -->
+<div class="modal fade" id="editImageModal" tabindex="-1" role="dialog" aria-labelledby="editImageLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="editImageLabel">{{ Lang::get('image.title_edit_image') }}</h4>
+      </div>
+      <div class="modal-body">
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ Lang::get('common.cancel') }}</button>
+        <button type="button" id="save-edit-image" class="btn btn-success">{{ Lang::get('common.save') }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+@endif
+<!-- Modal -->
+<div class="modal fade" id="viewImageModal" tabindex="-1" role="dialog" aria-labelledby="viewImageLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="viewImageLabel">{{ Lang::get('image.title_view_image') }}</h4>
+      </div>
+      <div class="modal-body">
+          
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">{{ Lang::get('common.close') }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script type="text/javascript">
     $(function() {
         context.attach('.image-el', [
@@ -74,6 +112,68 @@
             {text: '{{ trans('image.menu_download') }}', action: function(e, options) {
                 location.href = '{{ route('image_download') }}/' + $(options.selector).attr('data-image-id');
             }},
+            @if($edit)
+            {divider: true},
+            {text: '{{ trans('image.menu_edit') }}', action: function(e, options) {
+                  wait();
+                  $.ajax({
+                    url: '{{ route('image_edit') }}/' + $(options.selector).attr('data-image-id'),
+                    success: function(res) {
+                        unwait();
+                        $('#editImageModal .modal-body').html(res);
+                        $('#editImageModal').modal('show');
+                    }
+                  });
+            }},
+            {text: '{{ trans('image.menu_delete') }}', action: function(e, options) {
+                  wait();
+                  $.ajax({
+                    url: '{{ route('image_delete') }}/' + $(options.selector).attr('data-image-id'),
+                    success: function(res) {
+                        unwait();
+                        try {
+                            if(res.success) {
+                                $(options.selector).remove();
+                            }
+                        }catch(err) {}
+                    }
+                  });
+            }},
+            @endif
+            {divider: true}, 
+            {text: '{{ trans('image.menu_view') }}', action: function(e, options) {
+                  wait();
+                  $.ajax({
+                    url: '{{ route('image_view') }}/' + $(options.selector).attr('data-image-id'),
+                    success: function(res) {
+                        unwait();
+                        $('#viewImageModal .modal-body').html(res);
+                        $('#viewImageModal').modal('show');
+                    }
+                  });
+            }}
         ]);
+        $('#save-edit-image').click(function() {
+            $('#edit-image-form').submit();
+        });
+        $('#editImageModal').on('submit', '#edit-image-form', function() {
+            if($(this).validationEngine('validate')) {
+                $.ajax({
+                    url: '{{ route('image_do_edit') }}',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    success: function(res) {                        
+                        $('#editImageModal').modal('hide');
+                        try {
+                            if(res.success) {
+                                $('[data-image-id="' + res.image.id + '"] .name').html(res.image.name);
+                            }
+                        }catch(err){}
+                    } 
+                });
+                
+            }
+            return false;
+        });
     });
 </script>

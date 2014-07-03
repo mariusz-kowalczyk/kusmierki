@@ -25,6 +25,12 @@
         </div>
     </div>
     <div class="form-group">
+        <label class="col-md-4 control-label">{{ trans('common.label_created_by') }}</label>
+        <div class="col-md-8">
+            <p class="form-control-static">{{ $gallery->user->__toString() }}</p>
+        </div>
+    </div>
+    <div class="form-group">
         <p class="text-center">
             @if($gallery->visibility == Gallery::VISIBILITY_PUBLIC)
             {{ trans('gallery.message_visibility_public') }}

@@ -30,3 +30,7 @@ Route::get('/logout', array('as' => 'user_logout', 'uses' => 'UserController@log
 Route::model('image', 'Image');
 Route::post('/image/upload/{gallery}', array('as' => 'image_upload', 'uses' => 'ImageController@upload'))->where('gallery', '\d+');
 Route::get('/image/download/{image?}', array('as' => 'image_download', 'uses' => 'ImageController@download'))->where('image', '\d+');
+Route::post('/image/edit', array('as' => 'image_do_edit', 'uses' => 'ImageController@doEdit'));
+Route::get('/image/edit/{image?}', array('as' => 'image_edit', 'uses' => 'ImageController@edit'))->where('image', '\d+');
+Route::get('/image/delete/{image?}', array('as' => 'image_delete', 'uses' => 'ImageController@delete'))->where('image', '\d+');
+Route::get('/image/view/{image?}', array('as' => 'image_view', 'uses' => 'ImageController@view'))->where('image', '\d+');
