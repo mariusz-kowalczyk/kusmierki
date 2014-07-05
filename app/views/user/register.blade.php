@@ -48,23 +48,26 @@
                 </div>
             </div>
             <div class="form-group {{ $v->doClass('birthday') }}">
-                <label class="control-label col-md-4" for="user-birthday" >{{ Lang::get('user.label_birthday') }}</label>
+                <label class="control-label col-md-4" for="birthday-year" >{{ Lang::get('user.label_birthday') }}</label>
                 <div class="col-md-8">
-                    <input type="hidden" name="user[birthday]" value="{{ $user->birthday or '' }}" placeholder="{{ Lang::get('user.label_birthday') }}" class="form-control @validate(user|birthday)" id="user-birthday" />
+                    <input type="hidden" name="user[birthday]" value="{{ $user->birthday or '' }}" class="form-control @validate(user|birthday)" id="user-birthday" />
                     <div class="input-group">
                         <select id="birthday-year" class="form-control">
+                            <option value="" >{{ trans('user.select_year') }}</option>
                             @for($r = (int)date('Y') - 100; $r <= (int)date('Y'); $r++)
-                            <option value="{{ $r }}" @if((empty($user) && $r == 2000) || (!empty($user) && date('Y', strtotime($user->birthday)) == $r)) selected="selected" @endif>{{ $r }}</option>
+                            <option value="{{ $r }}" @if(!empty($user) && date('Y', strtotime($user->birthday)) == $r) selected="selected" @endif>{{ $r }}</option>
                             @endfor
                         </select>
                         <span class="input-group-addon">-</span>
                         <select id="birthday-month" class="form-control">
+                            <option value="" >{{ trans('user.select_month') }}</option>
                             @for($m = 1; $m <= 12; $m++)
                             <option value="{{ $m }}" @if(!empty($user) && date('m', strtotime($user->birthday)) == $m) selected="selected" @endif>{{ $m }}</option>
                             @endfor
                         </select>
                         <span class="input-group-addon">-</span>
                         <select id="birthday-day" class="form-control">
+                            <option value="" >{{ trans('user.select_day') }}</option>
                             @for($d = 1; $d <= 31; $d++)
                             <option value="{{ $d }}" @if(!empty($user) && date('d', strtotime($user->birthday)) == $d) selected="selected" @endif>{{ $d }}</option>
                             @endfor

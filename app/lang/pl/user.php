@@ -25,4 +25,8 @@ return array(
     
     'button_register'   => 'Zarejstruj',
     'button_login'   => 'Zaloguj się',
+    
+    'select_year'  => 'Rok',
+    'select_month'  => 'Miesiąc',
+    'select_day'  => 'Dzień',
 );
