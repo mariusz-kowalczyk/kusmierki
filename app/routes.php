@@ -34,3 +34,8 @@ Route::post('/image/edit', array('as' => 'image_do_edit', 'uses' => 'ImageContro
 Route::get('/image/edit/{image?}', array('as' => 'image_edit', 'uses' => 'ImageController@edit'))->where('image', '\d+');
 Route::get('/image/delete/{image?}', array('as' => 'image_delete', 'uses' => 'ImageController@delete'))->where('image', '\d+');
 Route::get('/image/view/{image?}', array('as' => 'image_view', 'uses' => 'ImageController@view'))->where('image', '\d+');
+
+//only admin
+if(User::hasRole('admin')) {
+    Route::get('/user/index', array('as' => 'user_index', 'uses' => 'UserController@index'));
+}

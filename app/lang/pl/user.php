@@ -3,6 +3,7 @@
 return array(
     'title_login' => 'Logowanie',
     'title_register' => 'Rejestracja użytkownika',
+    'title_index' => 'Lista użytkoników',
     
     'message_register'  => 'Rejestracja użytkownika',
     'messages_registered'  => 'Rejestracja przebiegła pomyślnie. W najbliższym czasie twoje konto zostanie aktywowane. Jeżeli podałeś adres e-mail otrzymasz powiadomienie.',
@@ -13,6 +14,7 @@ return array(
     'message_your_account_is_not_activated' => 'Twoje konto nie zostało jeszcze aktywowane',
     'messages_you_was_logout' => 'Zostałeś wylogowany',
     'message_welcome' => 'Witaj w serwisie',
+    'message_index' => 'Lista użytkoników',
     
     'label_login'   => 'Login',
     'label_password'   => 'Hasło',

@@ -72,6 +72,20 @@
                 </div>
                 <div class="col-md-6">
                     <nav id="top-menu" >
+                        <!-- Single button -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown">
+                                {{ trans('common.more') }} <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li class="nav-header">{{ trans('common.menu') }}</li>
+                                @if(User::hasRole('admin'))
+                                <li><a href="{{ route('user_index') }}">{{ trans('common.nav_users') }}</a></li>
+                                <li class="divider"></li>
+                                @endif
+                            </ul>
+                        </div>
+                        
                         <a href="{{ route('gallery_index') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_gallery') }}</a>
                         @if(Auth::check())
                         <a href="{{ route('user_logout') }}" class="btn btn-lg btn-danger">{{ Lang::get('common.nav_logout') }}</a>

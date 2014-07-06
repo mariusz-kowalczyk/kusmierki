@@ -111,5 +111,11 @@ class BaseController extends Controller {
             }
         }        
     }
+    
+    public function index() {
+        $model_name = $this->model_name;
+        $list = $model_name::all();
+        $this->view->with('list', $list);
+    }
 
 }

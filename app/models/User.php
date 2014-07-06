@@ -37,11 +37,13 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
         'login'         => 'required|unique:users',
         'password'      => 'required',
         'password_confirm'  => 'same:password',
-        'email'         => 'email',
+        'email'         => 'email|unique:users',
         'firstname'     => 'required',
         'lastname'      => 'required',
         'birthday'       => 'date'
     );
+    
+    private static $users_roles = array();
 
     public function galleries() {
         return $this->hasMany('Gallery');
@@ -49,5 +51,37 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     
     public function __toString() {
         return $this->firstname . ' ' . $this->lastname;
+    }
+    
+    /**
+     * 
+     * @param string $role_key
+     * @param object $user
+     * @return boolean
+     */
+    public static function hasRole($role_key, $user = null) {
+        if(is_null($user)) {
+            if(!Auth::check()) {
+                return false;
+            }
+            $user = Auth::user();
+        }
+        if(empty(self::$users_roles[$user->id])) {
+            $roles = array();
+            foreach($user->roles as $role) {
+                $roles[$role->id] = $role->key;
+            }
+            self::$users_roles[$user->id] = $roles;
+        }
+        
+        if(in_array($role_key, self::$users_roles[$user->id])) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+    
+    public function roles() {
+        return $this->belongsToMany('Role', 'user_roles');
     }
 }
