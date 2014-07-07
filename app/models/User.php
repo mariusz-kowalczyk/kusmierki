@@ -84,4 +84,16 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
     public function roles() {
         return $this->belongsToMany('Role', 'user_roles');
     }
+    
+    /**
+     * 
+     * @return array
+     */
+    public function getArrayIdsRoles() {
+        $roles = array();
+        foreach($this->roles as $role) {
+            $roles[] = $role->id;
+        }
+        return $roles;
+    }
 }

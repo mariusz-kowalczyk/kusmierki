@@ -58,8 +58,15 @@ class BaseController extends Controller {
         }
     }
     
+    protected function preEditRender($item = null) {
+        
+    }
+
     public function edit($item = null) {
+        $my_validator = new MK\Validator();
         $this->view->with($this->model_lc_name, $item);
+        $this->view->with('v', $my_validator);
+        $this->preEditRender($item);
     }
     
     public function delete($item = null) {
@@ -73,11 +80,37 @@ class BaseController extends Controller {
         $this->view->with($this->model_lc_name, $item);
     }
     
+    /**
+     * 
+     * @param array $data
+     * @param BaseModel $item
+     * @return array
+     */
     protected function preEditFill($data, $item = null) {
         return $data;
     }
     
-    public function doEdit() {        
+    /**
+     * Zwraca reguły dla walidatora
+     * 
+     * @param string $model_name
+     * @return array
+     */
+    protected function getRules($model_name) {
+        return $model_name::$rules;
+    }
+    
+    /**
+     * 
+     * @param BaseModel $item
+     * @param array $data
+     */
+    protected function postEditSave($item, $data) {
+        
+    }
+
+    public function doEdit() {
+        $my_validator = new MK\Validator();
         $data = Input::get($this->model_lc_name, array());
         $model_name = $this->model_name;
         if(empty($data['id'])) {
@@ -89,16 +122,19 @@ class BaseController extends Controller {
         $data = $this->preEditFill($data, $item);
         $item->fill($data);
         
-        $validator = Validator::make($data, $model_name::$rules); 
+        $rules = $this->getRules($model_name);
+        $validator = Validator::make($data, $rules);
+        $my_validator->setLaravelValidator($validator);
         if(!$validator->fails()) {            
             $item->save();
+            $this->postEditSave($item, $data);
             if(Request::ajax()) {
                 return Response::json(array(
                     'success'   => true,
                     $this->model_lc_name    => $item->toArray()
                 ));
             }else {
-                return Redirect::route($this->model_lc_name . '_index')->with('notice', Lang::get('gallery.messages_saved'));
+                return Redirect::route($this->model_lc_name . '_index')->with('notice', Lang::get($this->model_lc_name . '.messages_saved'));
             }
         }else { 
             if(Request::ajax()) {
@@ -107,7 +143,10 @@ class BaseController extends Controller {
                     'message'    => $validator->messages()
                 ));
             }else {
-                return Redirect::route($this->model_lc_name . '_index')->with('error', $validator->messages());
+                //return Redirect::route($this->model_lc_name . '_index')->with('error', $validator->messages());
+                $this->view->with('v', $my_validator);
+                $this->view->with($this->model_lc_name, $item);
+                $this->preEditRender($item);
             }
         }        
     }

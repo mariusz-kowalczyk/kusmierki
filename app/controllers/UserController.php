@@ -20,7 +20,6 @@ class UserController extends BaseController {
             if(!$validator->fails()) {
                 $user->password = Hash::make($user->password);
                 $user->status = User::STATUS_INACTIVE;
-                $user->role = User::ROLE_USER;
                 $user->save();
                 
                 //wysłanie emaila
@@ -68,5 +67,43 @@ class UserController extends BaseController {
     public function logout() {
         Auth::logout();
         return Redirect::route('user_login')->with('notice', Lang::get('user.messages_you_was_logout'));
+    }
+    
+    /**
+     * 
+     * @param User $user
+     */
+    protected function preEditRender($user = null) {
+        $roles = array();
+        if($user) {
+            $roles = $user->getArrayIdsRoles();
+        }
+        $this->view->with('user_roles', $roles);
+    }
+    
+    protected function preEditFill($data, $item = null) {
+        if(!empty($item) && $item->email == $data['email']) {
+            unset($data['email']);
+        }
+        return $data;
+    }
+    
+    protected function getRules($model_name) {
+        $rules = parent::getRules($model_name);
+        unset($rules['login']);
+        unset($rules['password']);
+        return $rules;
+    }
+    
+    /**
+     * 
+     * @param User $item
+     * @param array $data
+     */
+    protected function postEditSave($item, $data) {
+        if(!isset($data['roles'])) {
+            $data['roles'] = array();
+        }
+        $item->roles()->sync($data['roles']);
     }
 }

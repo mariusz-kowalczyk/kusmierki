@@ -9,12 +9,17 @@ class UserRolesTableSeeder extends Seeder {
     
     public function run() {
         
-        $role = new Role();
-        $role->key = 'admin';
-        $role->description = 'Najwyższe uprawnienia';
-        $role->save();
+        $role = Role::createIfNotExists(array(
+            'key'   => 'admin',
+            'description'   => 'Najwyższe uprawnienia'
+        ));
+        Role::createIfNotExists(array(
+            'key'   => 'edit_gallery',
+            'description'   => 'Możliwość dodawanie i edytowania glarii oraz zdjęć'
+        ));
         
         $user = User::where('login', '=', 'mariusz')->first();
+        $user->roles()->detach($role->id);
         $user->roles()->attach($role->id);
     }
     

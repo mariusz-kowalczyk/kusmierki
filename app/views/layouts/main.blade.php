@@ -81,6 +81,7 @@
                                 <li class="nav-header">{{ trans('common.menu') }}</li>
                                 @if(User::hasRole('admin'))
                                 <li><a href="{{ route('user_index') }}">{{ trans('common.nav_users') }}</a></li>
+                                <li><a href="{{ route('role_index') }}">{{ trans('common.nav_roles') }}</a></li>
                                 <li class="divider"></li>
                                 @endif
                             </ul>

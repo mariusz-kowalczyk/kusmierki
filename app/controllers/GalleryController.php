@@ -29,10 +29,7 @@ class GalleryController extends BaseController {
         if($gallery) {
             $images = $gallery->images;
         }
-        $edit = true;
-        if(!Auth::check()) {
-            $edit = false;
-        }
+        $edit = User::hasRole('edit_gallery');
         
         $this->view
                 ->with('galleries', $galleries)

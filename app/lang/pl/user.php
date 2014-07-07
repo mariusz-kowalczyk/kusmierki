@@ -4,6 +4,7 @@ return array(
     'title_login' => 'Logowanie',
     'title_register' => 'Rejestracja użytkownika',
     'title_index' => 'Lista użytkoników',
+    'title_edit' => 'Edycja użytkownika',
     
     'message_register'  => 'Rejestracja użytkownika',
     'messages_registered'  => 'Rejestracja przebiegła pomyślnie. W najbliższym czasie twoje konto zostanie aktywowane. Jeżeli podałeś adres e-mail otrzymasz powiadomienie.',
@@ -15,6 +16,8 @@ return array(
     'messages_you_was_logout' => 'Zostałeś wylogowany',
     'message_welcome' => 'Witaj w serwisie',
     'message_index' => 'Lista użytkoników',
+    'message_edit' => 'Edycja użytkownika',
+    'messages_saved' => 'Konto użytkownika zostało zapisane',
     
     'label_login'   => 'Login',
     'label_password'   => 'Hasło',
@@ -24,6 +27,8 @@ return array(
     'label_lastname'   => 'Nazwisko',
     'label_birthday'   => 'Data urodzenia',
     'label_login_or_email'   => 'Login lub E-mail',
+    'label_status'   => 'Status',
+    'label_roles'   => 'Role',
     
     'button_register'   => 'Zarejstruj',
     'button_login'   => 'Zaloguj się',
@@ -31,4 +36,10 @@ return array(
     'select_year'  => 'Rok',
     'select_month'  => 'Miesiąc',
     'select_day'  => 'Dzień',
+    
+    'choices_status'    => array(
+        0   => 'Inactive',
+        1   => 'Active',
+        2   => 'Blocked',
+    )
 );

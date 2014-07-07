@@ -20,6 +20,7 @@ Route::get('/gallery/delete/{gallery?}', array('as' => 'gallery_delete', 'uses' 
 Route::get('/gallery/view/{gallery?}', array('as' => 'gallery_view', 'uses' => 'GalleryController@view'))->where('gallery', '\d+');
 
 //User
+Route::model('user', 'User');
 Route::get('/register', array('as' => 'user_register', 'uses' => 'UserController@register'));
 Route::post('/register', array('as' => 'user_do_register', 'uses' => 'UserController@register'));
 Route::get('/login', array('as' => 'user_login', 'uses' => 'UserController@login'));
@@ -38,4 +39,8 @@ Route::get('/image/view/{image?}', array('as' => 'image_view', 'uses' => 'ImageC
 //only admin
 if(User::hasRole('admin')) {
     Route::get('/user/index', array('as' => 'user_index', 'uses' => 'UserController@index'));
+    Route::get('/user/edit/{user}', array('as' => 'user_edit', 'uses' => 'UserController@edit'));
+    Route::post('/user/edit', array('as' => 'user_do_edit', 'uses' => 'UserController@doEdit'));
+    
+    Route::get('/role/index', array('as' => 'role_index', 'uses' => 'RoleController@index'));
 }
