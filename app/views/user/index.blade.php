@@ -9,7 +9,8 @@
                 <th>{{ trans('user.label_login') }}</th>
                 <th>{{ trans('user.label_firstname') }}</th>
                 <th>{{ trans('user.label_lastname') }}</th>
-                <th></th>
+                <th style="width: 180px;">{{ trans('user.label_status') }}</th>
+                <th style="width: 100px;"></th>
             </tr>
         </thead>
         <tbody>
@@ -19,6 +20,12 @@
                 <td>{{ $user->login }}</td>
                 <td>{{ $user->firstname }}</td>
                 <td>{{ $user->lastname }}</td>
+                <td>
+                    {{ $user->getStatus() }}
+                    @if($user->status == User::STATUS_INACTIVE)
+                    <a href="{{ route('user_do_active', array('user' => $user->id)) }}" class="btn-link" >{{ trans('user.button_active') }}</a>
+                    @endif
+                </td>
                 <td>
                     <a href="{{ route('user_edit', array('user' => $user->id)) }}" class="btn-link">{{ trans('common.edit') }}</a>
                 </td>

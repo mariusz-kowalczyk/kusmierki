@@ -96,4 +96,13 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
         }
         return $roles;
     }
+    
+    public function getStatus() {
+        foreach (Lang::get('user.choice_status') as $key => $status) {
+            if($this->status == $key) {
+                return $status;
+            }
+        }
+        return $this->status;
+    }
 }

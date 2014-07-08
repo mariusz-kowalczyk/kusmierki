@@ -18,6 +18,8 @@ return array(
     'message_index' => 'Lista użytkoników',
     'message_edit' => 'Edycja użytkownika',
     'messages_saved' => 'Konto użytkownika zostało zapisane',
+    'messages_account_has_been_activated' => 'Konto użytkownika zostało aktywowane',
+    'messages_your_account_has_been_activated' => 'Twoje konto zostało aktywowane',
     
     'label_login'   => 'Login',
     'label_password'   => 'Hasło',
@@ -29,6 +31,7 @@ return array(
     'label_login_or_email'   => 'Login lub E-mail',
     'label_status'   => 'Status',
     'label_roles'   => 'Role',
+    'button_active' => 'Aktywuj',
     
     'button_register'   => 'Zarejstruj',
     'button_login'   => 'Zaloguj się',
@@ -37,9 +40,9 @@ return array(
     'select_month'  => 'Miesiąc',
     'select_day'  => 'Dzień',
     
-    'choices_status'    => array(
-        0   => 'Inactive',
-        1   => 'Active',
-        2   => 'Blocked',
+    'choice_status'    => array(
+        0   => 'Nieaktywne',
+        1   => 'Aktywne',
+        2   => 'Zablokowane',
     )
 );

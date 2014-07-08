@@ -106,4 +106,18 @@ class UserController extends BaseController {
         }
         $item->roles()->sync($data['roles']);
     }
+    
+    public function active($user) {
+        $user->status = User::STATUS_ACTIVE;
+        $user->save();
+        
+        if(!empty($user->email)) {
+            Mail::send('emails.account-has-been-activated', array('user' => $user), function($message) use ($user)
+            {
+                $message->to($user->email, $user->firstname . ' ' . $user->lastname)->subject(Lang::get('user.messages_your_account_has_been_activated'));
+            });
+        }
+        
+        return Redirect::route('user_index')->with('notice', Lang::get('user.messages_account_has_been_activated'));
+    }
 }

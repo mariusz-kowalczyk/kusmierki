@@ -35,7 +35,7 @@
     <label class="control-label col-md-4" for="user-status">{{ trans('user.label_status') }}</label>
     <div class="col-md-8">
         <select name="user[status]" class="form-control @validate(user|status)" id="user-status">
-            @foreach(Lang::get('user.choices_status') as $key => $status) 
+            @foreach(Lang::get('user.choice_status') as $key => $status) 
             <option value="{{ $key }}" @if(isset($user->status) && $user->status == $key) selected="selected" @endif>{{ $status }}</option>
             @endforeach
         </select>

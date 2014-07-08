@@ -41,6 +41,7 @@ if(User::hasRole('admin')) {
     Route::get('/user/index', array('as' => 'user_index', 'uses' => 'UserController@index'));
     Route::get('/user/edit/{user}', array('as' => 'user_edit', 'uses' => 'UserController@edit'));
     Route::post('/user/edit', array('as' => 'user_do_edit', 'uses' => 'UserController@doEdit'));
+    Route::get('/user/active/{user}', array('as' => 'user_do_active', 'uses' => 'UserController@active'))->where('user', '\d+');
     
     Route::get('/role/index', array('as' => 'role_index', 'uses' => 'RoleController@index'));
 }

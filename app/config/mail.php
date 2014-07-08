@@ -54,7 +54,7 @@ return array(
 	|
 	*/
 
-	'from' => array('address' => 'm.kowalczyk44446@gmail.com', 'name' => 'Mariusz Kowalczyk'),
+	'from' => array('address' => 'm.kowalczyk44446@gmail.com', 'name' => 'Kuśmierki, Mariusz Kowalczyk'),
 
 	/*
 	|--------------------------------------------------------------------------
