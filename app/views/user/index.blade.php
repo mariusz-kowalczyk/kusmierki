@@ -1,5 +1,5 @@
 
-<h3>{{ Lang::get('user.message_index') }}</h3>
+<h3 class="header">{{ Lang::get('user.message_index') }}</h3>
 
 <div class="table-responsive">
     <table class="table table-striped table-bordered table-hover">

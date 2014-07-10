@@ -112,7 +112,7 @@ body > div.wrap {
     }
 }
 
-h2 {
+h2.header {
     background-color: #428bca;
     border-radius: 10px;
     box-shadow: 4px 4px 6px #428bca;
@@ -125,7 +125,7 @@ h2 {
     border: 2px solid #2c7fc1;
 }
 
-h3 {
+h3.header {
     background-color: #ffffff;
     border-radius: 10px;
     box-shadow: 3px 3px 6px #519ad9;

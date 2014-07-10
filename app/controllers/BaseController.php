@@ -119,6 +119,7 @@ class BaseController extends Controller {
             $item = $model_name::find($data['id']);
             unset($data['id']);
         }
+        
         $data = $this->preEditFill($data, $item);
         $item->fill($data);
         

@@ -5,9 +5,6 @@
  *
  * @author Mariusz Kowalczyk
  */
-class NoticeController {
+class NoticeController extends BaseController {
     
-    public function index() {
-        
-    }
 }

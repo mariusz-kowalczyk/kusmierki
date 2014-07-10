@@ -1,4 +1,4 @@
-<h3>{{ Lang::get('gallery.message_images') }}</h3>
+<h3 class="header">{{ Lang::get('gallery.message_images') }}</h3>
 
 @if($edit)
 <div id="images-upload-container">

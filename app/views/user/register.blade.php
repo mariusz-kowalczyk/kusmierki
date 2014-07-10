@@ -1,4 +1,4 @@
-<h2>{{ Lang::get('user.message_register') }}</h2>
+<h2 class="header">{{ Lang::get('user.message_register') }}</h2>
 
 <hr/>
 

@@ -1,5 +1,5 @@
 
-<h3>{{ Lang::get('user.message_edit') }}</h3>
+<h3 class="header">{{ Lang::get('user.message_edit') }}</h3>
 
 <div class="row" >
     <div class="col-md-8">

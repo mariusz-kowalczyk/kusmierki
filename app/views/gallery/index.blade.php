@@ -10,7 +10,7 @@
 @endif
 
 @if($edit || isset($galleries[0]))
-<h3>{{ Lang::get('gallery.message_index') }}</h3>
+<h3 class="header">{{ Lang::get('gallery.message_index') }}</h3>
 
 <div class="galleries-list">
     @foreach($galleries as $g) 

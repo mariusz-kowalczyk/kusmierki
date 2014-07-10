@@ -36,6 +36,10 @@ Route::get('/image/edit/{image?}', array('as' => 'image_edit', 'uses' => 'ImageC
 Route::get('/image/delete/{image?}', array('as' => 'image_delete', 'uses' => 'ImageController@delete'))->where('image', '\d+');
 Route::get('/image/view/{image?}', array('as' => 'image_view', 'uses' => 'ImageController@view'))->where('image', '\d+');
 
+//Notice
+Route::model('notice', 'Notice');
+Route::get('/notice/index', array('as' => 'notice_index', 'uses' => 'NoticeController@index'));
+
 //only admin
 if(User::hasRole('admin')) {
     Route::get('/user/index', array('as' => 'user_index', 'uses' => 'UserController@index'));
@@ -44,4 +48,9 @@ if(User::hasRole('admin')) {
     Route::get('/user/active/{user}', array('as' => 'user_do_active', 'uses' => 'UserController@active'))->where('user', '\d+');
     
     Route::get('/role/index', array('as' => 'role_index', 'uses' => 'RoleController@index'));
+}
+
+if(User::hasRole('add_notice')) {
+    Route::get('/notice/edit/{notice?}', array('as' => 'notice_edit', 'uses' => 'NoticeController@edit'));
+    Route::post('/notice/edit', array('as' => 'notice_do_edit', 'uses' => 'NoticeController@doEdit'));
 }

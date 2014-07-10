@@ -84,6 +84,10 @@
                                 <li><a href="{{ route('role_index') }}">{{ trans('common.nav_roles') }}</a></li>
                                 <li class="divider"></li>
                                 @endif
+                                @if(User::hasRole('add_notice'))
+                                <li><a href="{{ route('notice_edit') }}">{{ trans('common.nav_add_notice') }}</a></li>
+                                <li class="divider"></li>
+                                @endif
                             </ul>
                         </div>
                         

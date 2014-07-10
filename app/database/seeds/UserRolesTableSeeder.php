@@ -17,6 +17,10 @@ class UserRolesTableSeeder extends Seeder {
             'key'   => 'edit_gallery',
             'description'   => 'Możliwość dodawanie i edytowania glarii oraz zdjęć'
         ));
+        Role::createIfNotExists(array(
+            'key'   => 'add_notice',
+            'description'   => 'Możliwość dodawania ogłoszeń'
+        ));
         
         $user = User::where('login', '=', 'mariusz')->first();
         $user->roles()->detach($role->id);

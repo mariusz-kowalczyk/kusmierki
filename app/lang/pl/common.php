@@ -7,6 +7,7 @@ return array(
     'nav_logout' => 'Wyloguj się',
     'nav_users' => 'Użytkownicy',
     'nav_roles' => 'Role',
+    'nav_add_notice' => 'Dodaj ogłoszenie',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
