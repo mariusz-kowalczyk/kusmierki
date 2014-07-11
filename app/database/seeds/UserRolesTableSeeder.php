@@ -18,7 +18,7 @@ class UserRolesTableSeeder extends Seeder {
             'description'   => 'Możliwość dodawanie i edytowania glarii oraz zdjęć'
         ));
         Role::createIfNotExists(array(
-            'key'   => 'add_notice',
+            'key'   => 'edit_notice',
             'description'   => 'Możliwość dodawania ogłoszeń'
         ));
         

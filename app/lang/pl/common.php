@@ -8,6 +8,7 @@ return array(
     'nav_users' => 'Użytkownicy',
     'nav_roles' => 'Role',
     'nav_add_notice' => 'Dodaj ogłoszenie',
+    'nav_notices' => 'Ogłoszenia',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
@@ -15,6 +16,7 @@ return array(
     'close'  => 'Zamknij',
     'more'  => 'Więcej',
     'edit'  => 'Edycja',
+    'delete'  => 'Usuń',
     
     'label_created_at'  => 'Data utworzenia',
     'label_updated_at'  => 'Data ostatniej edycji',

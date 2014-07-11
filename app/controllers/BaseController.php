@@ -71,9 +71,13 @@ class BaseController extends Controller {
     
     public function delete($item = null) {
         $item->delete();
-        return Response::json(array(
-            'success'   => true
-        ));
+        if(Request::ajax()) {
+            return Response::json(array(
+                'success'   => true
+            ));
+        }else {
+            return Redirect::route($this->model_lc_name . '_index')->with('notice', Lang::get($this->model_lc_name . '.messages_deleted'));
+        }
     }
     
     public function view($item = null) {

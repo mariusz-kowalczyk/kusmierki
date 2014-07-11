@@ -50,7 +50,8 @@ if(User::hasRole('admin')) {
     Route::get('/role/index', array('as' => 'role_index', 'uses' => 'RoleController@index'));
 }
 
-if(User::hasRole('add_notice')) {
+if(User::hasRole('edit_notice')) {
     Route::get('/notice/edit/{notice?}', array('as' => 'notice_edit', 'uses' => 'NoticeController@edit'));
     Route::post('/notice/edit', array('as' => 'notice_do_edit', 'uses' => 'NoticeController@doEdit'));
+    Route::get('/notice/delete/{notice?}', array('as' => 'notice_delete', 'uses' => 'NoticeController@delete'));
 }

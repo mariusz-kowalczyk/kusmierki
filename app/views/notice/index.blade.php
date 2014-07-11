@@ -10,6 +10,11 @@
         {{ $notice->content }}
     </div>
 </div>
-<a class="btn btn-primary pull-right" href="{{ route('notice_edit', array('notice' => $notice->id)) }}">{{ trans('common.edit') }}</a>
+@if(User::hasRole('edit_notice'))
+<div class="btn-group pull-right">
+    <a class="btn btn-primary" href="{{ route('notice_edit', array('notice' => $notice->id)) }}">{{ trans('common.edit') }}</a>
+    <a class="btn btn-danger" href="{{ route('notice_delete', array('notice' => $notice->id)) }}">{{ trans('common.delete') }}</a>
+</div>
 <div class="clearfix"></div>
+@endif
 @endforeach

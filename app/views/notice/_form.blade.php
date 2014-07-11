@@ -16,11 +16,9 @@
     </div>
 </div>
 
-{{ $notice->content or '' }}
-
 <div class="form-group {{ $v->doClass('content') }}">
     <div class="col-md-12">
-        <textarea name="notice[content]" class="form-control @validate(notice|content)" placeholder="{{ trans('notice.label_content') }}" id="notice-content" >{{ $notice->content }}</textarea> 
+        <textarea name="notice[content]" class="form-control @validate(notice|content)" placeholder="{{ trans('notice.label_content') }}" id="notice-content" >{{ $notice->content or '' }}</textarea> 
     </div>    
 </div>
 

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 class Notice extends BaseModel {
     
     use SoftDeletingTrait;
-    
+
     protected $table = 'notices';
     public $timestamps = true;
     protected $fillable = array('title', 'content');
@@ -22,7 +22,7 @@ class Notice extends BaseModel {
     
     public function getAttribute($key) {
         if($key == 'content') {
-            if(array_key_exists($key, $this->attributes)) {
+            if(array_key_exists($key, $this->attributes)) { 
                 return $this->getAttributeValue($key);
             }
             $path = $this->getStorePath();
@@ -55,5 +55,13 @@ class Notice extends BaseModel {
         $this->content = $content;
         
         return $ret;
+    }
+    
+    public function __isset($name) {
+        if($name == 'content') {
+            return true;
+        }else {
+            return parent::__isset($name);
+        }
     }
 }

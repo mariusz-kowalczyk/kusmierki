@@ -63,41 +63,44 @@
     <header id="header">
         <div class="container">
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div id="banner">
                         <a href="{{ route('gallery_index') }}">
                             <h1>Kuśmierki</h1>
                         </a>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <nav id="top-menu" >
-                        <!-- Single button -->
                         <div class="btn-group">
-                            <button type="button" class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown">
-                                {{ trans('common.more') }} <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu" role="menu">
-                                <li class="nav-header">{{ trans('common.menu') }}</li>
-                                @if(User::hasRole('admin'))
-                                <li><a href="{{ route('user_index') }}">{{ trans('common.nav_users') }}</a></li>
-                                <li><a href="{{ route('role_index') }}">{{ trans('common.nav_roles') }}</a></li>
-                                <li class="divider"></li>
-                                @endif
-                                @if(User::hasRole('add_notice'))
-                                <li><a href="{{ route('notice_edit') }}">{{ trans('common.nav_add_notice') }}</a></li>
-                                <li class="divider"></li>
-                                @endif
-                            </ul>
+                            <!-- Single button -->
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-lg btn-info dropdown-toggle" data-toggle="dropdown">
+                                    {{ trans('common.more') }} <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li class="nav-header">{{ trans('common.menu') }}</li>
+                                    @if(User::hasRole('admin'))
+                                    <li><a href="{{ route('user_index') }}">{{ trans('common.nav_users') }}</a></li>
+                                    <li><a href="{{ route('role_index') }}">{{ trans('common.nav_roles') }}</a></li>
+                                    <li class="divider"></li>
+                                    @endif
+                                    @if(User::hasRole('edit_notice'))
+                                    <li><a href="{{ route('notice_edit') }}">{{ trans('common.nav_add_notice') }}</a></li>
+                                    <li class="divider"></li>
+                                    @endif
+                                </ul>
+                            </div>
+
+                            <a href="{{ route('gallery_index') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_gallery') }}</a>
+                            <a href="{{ route('notice_index') }}" class="btn btn-lg btn-success">{{ Lang::get('common.nav_notices') }}</a>
+                            @if(Auth::check())
+                            <a href="{{ route('user_logout') }}" class="btn btn-lg btn-danger">{{ Lang::get('common.nav_logout') }}</a>
+                            @else
+                            <a href="{{ route('user_register') }}" class="btn btn-lg btn-warning">{{ Lang::get('common.nav_register') }}</a>
+                            <a href="{{ route('user_login') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_login') }}</a>
+                            @endif
                         </div>
-                        
-                        <a href="{{ route('gallery_index') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_gallery') }}</a>
-                        @if(Auth::check())
-                        <a href="{{ route('user_logout') }}" class="btn btn-lg btn-danger">{{ Lang::get('common.nav_logout') }}</a>
-                        @else
-                        <a href="{{ route('user_register') }}" class="btn btn-lg btn-success">{{ Lang::get('common.nav_register') }}</a>
-                        <a href="{{ route('user_login') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_login') }}</a>
-                        @endif
                     </nav>
                 </div>
             </div>
