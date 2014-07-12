@@ -3,21 +3,24 @@
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 /**
- * Description of Notice
+ * Description of Site
  *
  * @author Mariusz Kowalczyk
  */
-class Notice extends BaseModel {
+class Site extends BaseModel {
     
     use SoftDeletingTrait;
 
-    protected $table = 'notices';
+    protected $table = 'sites';
     public $timestamps = true;
-    protected $fillable = array('title', 'content');
+    protected $fillable = array('title', 'content', 'link', 'visibility');
+    
     
     public static $rules = array(
         'title'  => 'required',
         'content'  => 'required',
+        'link'  => 'required|unique:sites',
+        'visibility'  => 'required',
     );
     
     public function getAttribute($key) {
@@ -39,7 +42,7 @@ class Notice extends BaseModel {
     }
     
     private function getStorePath() {
-        $path = app_path('storage/notices') . '/';
+        $path = app_path('storage/sites') . '/';
         if(!file_exists($path)) {
             mkdir($path);
         }
@@ -68,4 +71,6 @@ class Notice extends BaseModel {
     public function user() {
         return $this->belongsTo('User');
     }
+    
+    
 }

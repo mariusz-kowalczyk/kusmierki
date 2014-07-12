@@ -1,10 +1,10 @@
 <?php
 
 return array(
-    'title_login' => 'Logowanie',
-    'title_register' => 'Rejestracja użytkownika',
-    'title_index' => 'Lista użytkoników',
-    'title_edit' => 'Edycja użytkownika',
+    'title_login' => 'Kuśmierki, Logowanie',
+    'title_register' => 'Kuśmierki, Rejestracja użytkownika',
+    'title_index' => 'Kuśmierki, Lista użytkoników',
+    'title_edit' => 'Kuśmierki, Edycja użytkownika',
     
     'message_register'  => 'Rejestracja użytkownika',
     'messages_registered'  => 'Rejestracja przebiegła pomyślnie. W najbliższym czasie twoje konto zostanie aktywowane. Jeżeli podałeś adres e-mail otrzymasz powiadomienie.',

@@ -9,6 +9,8 @@ return array(
     'nav_roles' => 'Role',
     'nav_add_notice' => 'Dodaj ogłoszenie',
     'nav_notices' => 'Ogłoszenia',
+    'nav_sites' => 'Strony',
+    'nav_add_site' => 'Dodaj stronę',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
@@ -17,6 +19,9 @@ return array(
     'more'  => 'Więcej',
     'edit'  => 'Edycja',
     'delete'  => 'Usuń',
+    'yes'  => 'Tak',
+    'no'  => 'Nie',
+    'preview'  => 'Podgląd',
     
     'label_created_at'  => 'Data utworzenia',
     'label_updated_at'  => 'Data ostatniej edycji',

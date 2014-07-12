@@ -15,8 +15,11 @@
     </div>
 </div>
 
+@section('footer-script')
+@parent
 <script type="text/javascript">
     $(function() {
         $('#user-edit-form').validationEngine();
     });
 </script>
+@stop

@@ -19,7 +19,11 @@ class UserRolesTableSeeder extends Seeder {
         ));
         Role::createIfNotExists(array(
             'key'   => 'edit_notice',
-            'description'   => 'Możliwość dodawania ogłoszeń'
+            'description'   => 'Możliwość dodawania i edytowania ogłoszeń'
+        ));
+        Role::createIfNotExists(array(
+            'key'   => 'edit_sites',
+            'description'   => 'Możliwość dodawania i edytowania stron'
         ));
         
         $user = User::where('login', '=', 'mariusz')->first();

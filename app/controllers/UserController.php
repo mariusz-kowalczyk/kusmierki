@@ -88,8 +88,8 @@ class UserController extends BaseController {
         return $data;
     }
     
-    protected function getRules($model_name) {
-        $rules = parent::getRules($model_name);
+    protected function getRules($model_name, $data, $item) {
+        $rules = parent::getRules($model_name, $data, $item);
         unset($rules['login']);
         unset($rules['password']);
         return $rules;

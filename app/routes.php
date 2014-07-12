@@ -55,3 +55,26 @@ if(User::hasRole('edit_notice')) {
     Route::post('/notice/edit', array('as' => 'notice_do_edit', 'uses' => 'NoticeController@doEdit'));
     Route::get('/notice/delete/{notice?}', array('as' => 'notice_delete', 'uses' => 'NoticeController@delete'));
 }
+
+Route::model('site', 'Site');
+if(User::hasRole('edit_sites')) {
+    Route::get('/site/index', array('as' => 'site_index', 'uses' => 'SiteController@index'));
+    Route::get('/site/edit/{site?}', array('as' => 'site_edit', 'uses' => 'SiteController@edit'));
+    Route::post('/site/edit', array('as' => 'site_do_edit', 'uses' => 'SiteController@doEdit'));
+    Route::get('/site/delete/{site?}', array('as' => 'site_delete', 'uses' => 'SiteController@delete'));
+    Route::get('/site/preview/{site}', array('as' => 'site_preview', 'uses' => 'SiteController@show'));
+}
+
+$route_site_show_generate_pattern = function() {
+    $sites = array();
+    foreach(Site::where('visibility', '=', 1)->get(array('link')) as $s) {
+        $sites[] = '(' . $s->link . ')';
+    }
+    $pattern = implode('|', $sites);
+    if(empty($pattern)) {
+        //taki żeby nic nie złapał
+        $pattern = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+    }
+    return $pattern;
+};
+Route::get('/{site_link}', array('as' => 'site_show', 'uses' => 'SiteController@show'))->where('site_link', $route_site_show_generate_pattern());

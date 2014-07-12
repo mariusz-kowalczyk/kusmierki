@@ -100,7 +100,7 @@ class BaseController extends Controller {
      * @param string $model_name
      * @return array
      */
-    protected function getRules($model_name) {
+    protected function getRules($model_name, $data, $item) {
         return $model_name::$rules;
     }
     
@@ -111,6 +111,16 @@ class BaseController extends Controller {
      */
     protected function postEditSave($item, $data) {
         
+    }
+    
+    /**
+     * 
+     * @param BaseModel $item
+     * @param array $data
+     * @return BaseModel
+     */
+    protected function preEditSave($item, $data) {
+        return $item;
     }
 
     public function doEdit() {
@@ -125,12 +135,14 @@ class BaseController extends Controller {
         }
         
         $data = $this->preEditFill($data, $item);
+        $rules = $this->getRules($model_name, $data, $item);
+        
         $item->fill($data);
         
-        $rules = $this->getRules($model_name);
         $validator = Validator::make($data, $rules);
         $my_validator->setLaravelValidator($validator);
-        if(!$validator->fails()) {            
+        if(!$validator->fails()) {
+            $item = $this->preEditSave($item, $data);
             $item->save();
             $this->postEditSave($item, $data);
             if(Request::ajax()) {
@@ -158,7 +170,9 @@ class BaseController extends Controller {
     
     public function index() {
         $model_name = $this->model_name;
-        $list = $model_name::all();
+        $query = $model_name::query();
+        $query->orderBy('id', 'DESC');
+        $list = $query->get();
         $this->view->with('list', $list);
     }
 

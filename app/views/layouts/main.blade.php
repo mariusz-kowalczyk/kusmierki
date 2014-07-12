@@ -5,8 +5,15 @@
     <!--[if lt IE]>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <![endif]-->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $page['title'] }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>
+        @section('page-title')
+        {{ $page['title'] }}
+        @show
+    </title>
+    <meta name="author" content="Mariusz Kowalczyk"/>
+    <meta name="description" content="Strona wsi Kuśmierki. Strona zawiera galerię zdjęć, ogłoszenia i inne podstrony"/>
+    <meta name="keywords" content="Kuśmierki, Kusmierki, kuśmierki, kusmierki, strona wsi kusmierki, kusmierki ogłoszenia, kusmierki galeria"/>
 
     <!-- Bootstrap -->
     {{ HTML::style('css/bootstrap.min.css') }}
@@ -40,21 +47,6 @@
   <body>
     <div class="wrap">
         <div class="container">
-            @if(Session::has('notice'))
-            <div class="messages">
-                <p class="alert alert-success">{{ Session::get('notice') }}</p>
-            </div>
-            @endif
-            @if(Session::has('error'))
-            <div class="messages">
-                <p class="alert alert-danger">{{ Session::get('error') }}</p>
-            </div>
-            @endif
-            @if(Session::has('info'))
-            <div class="messages">
-                <p class="alert alert-info">{{ Session::get('info') }}</p>
-            </div>
-            @endif
             <div id="content">
                 {{ $content }}
             </div>
@@ -89,6 +81,14 @@
                                     <li><a href="{{ route('notice_edit') }}">{{ trans('common.nav_add_notice') }}</a></li>
                                     <li class="divider"></li>
                                     @endif
+                                    @if(User::hasRole('edit_notice'))
+                                    <li><a href="{{ route('site_index') }}">{{ trans('common.nav_sites') }}</a></li>
+                                    <li><a href="{{ route('site_edit') }}">{{ trans('common.nav_add_site') }}</a></li>
+                                    <li class="divider"></li>
+                                    @endif
+                                    @foreach(Site::where('visibility', '=', 1)->get() as $site)
+                                    <li><a href="{{ route('site_show', array('site_link' => $site->link)) }}">{{ $site->title }}</a></li>
+                                    @endforeach
                                 </ul>
                             </div>
 
@@ -104,7 +104,31 @@
                     </nav>
                 </div>
             </div>
+            @if(Session::has('notice'))
+            <div class="alert-messages">
+                <p class="alert alert-success">{{ Session::get('notice') }}</p>
+            </div>
+            @endif
+            @if(Session::has('error'))
+            <div class="alert-messages">
+                <p class="alert alert-danger">{{ Session::get('error') }}</p>
+            </div>
+            @endif
+            @if(Session::has('info'))
+            <div class="alert-messages">
+                <p class="alert alert-info">{{ Session::get('info') }}</p>
+            </div>
+            @endif
         </div>
     </header>
+    @section('footer-script')
+    <script type="text/javascript">
+        $(function() {
+            setTimeout(function() {
+                $('.alert-messages').fadeOut();
+            }, 3000);
+        });
+    </script>
+    @show
   </body>
 </html>

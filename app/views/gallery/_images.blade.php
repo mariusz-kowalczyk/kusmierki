@@ -98,6 +98,8 @@
   </div>
 </div>
 
+@section('footer-script')
+@parent
 <script type="text/javascript">
     $(function() {
         context.attach('.image-el', [
@@ -177,3 +179,4 @@
         });
     });
 </script>
+@stop

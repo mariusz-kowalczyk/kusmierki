@@ -88,6 +88,8 @@
 
 <hr/>
 
+@section('footer-script')
+@parent
 <script type="text/javascript" src="/js/models/user.js"></script>
 <script type="text/javascript">
     $(function() {
@@ -96,3 +98,4 @@
         User.register.setBirthday();
     });
 </script>
+@stop

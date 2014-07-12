@@ -16,3 +16,12 @@ $(function() {
         compress: false
     });
 });
+
+function in_array(needle, haystack) {
+    for(var i in haystack) {
+        if(needle == haystack[i]) {
+            return true;
+        }
+    }
+    return false;
+}

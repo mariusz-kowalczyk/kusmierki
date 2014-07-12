@@ -99,6 +99,8 @@
     </div>
   </div>
 </div>
+@section('footer-script')
+@parent
 <script src="/js/models/gallery.js" type="text/javascript"></script>
 <script type="text/javascript">
     @if($gallery && $edit)
@@ -156,3 +158,4 @@
             ]); 
     });
 </script>
+@stop

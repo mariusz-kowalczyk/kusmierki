@@ -28,6 +28,7 @@
 
 body > div.wrap {
     margin-top: 70px;
+    margin-bottom: 50px;
 }
 
 #top-menu {
@@ -144,8 +145,15 @@ h3.header {
     }
 }
 
-.messages {
-    margin-top: 10px;
+#header .container {
+    position: relative;
+}
+
+.alert-messages {
+    left: 244px;
+    position: absolute;
+    top: 10px;
+    width: 340px;
 }
 
 .galleries-list .gallery-el {

@@ -28,4 +28,8 @@
     // Replace the <textarea id="editor1"> with a CKEditor
     // instance, using default configuration.
     CKEDITOR.replace( 'notice-content' );
+    
+    $(function() {
+        $('#notice-edit-form').validationEngine();
+    });
 </script>
