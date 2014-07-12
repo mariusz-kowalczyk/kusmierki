@@ -14,31 +14,31 @@
 //Gellery
 Route::model('gallery', 'Gallery');
 Route::get('/{gallery?}', array('as' => 'gallery_index', 'uses' => 'GalleryController@index'))->where('gallery', '\d+');
-Route::post('/gallery/edit', array('as' => 'gallery_do_edit', 'uses' => 'GalleryController@doEdit'));
-Route::get('/gallery/edit/{gallery?}', array('as' => 'gallery_edit', 'uses' => 'GalleryController@edit'))->where('gallery', '\d+');
-Route::get('/gallery/delete/{gallery?}', array('as' => 'gallery_delete', 'uses' => 'GalleryController@delete'))->where('gallery', '\d+');
-Route::get('/gallery/view/{gallery?}', array('as' => 'gallery_view', 'uses' => 'GalleryController@view'))->where('gallery', '\d+');
+Route::post('/galeria/edit', array('as' => 'gallery_do_edit', 'uses' => 'GalleryController@doEdit'));
+Route::get('/galeria/edit/{gallery?}', array('as' => 'gallery_edit', 'uses' => 'GalleryController@edit'))->where('gallery', '\d+');
+Route::get('/galeria/delete/{gallery?}', array('as' => 'gallery_delete', 'uses' => 'GalleryController@delete'))->where('gallery', '\d+');
+Route::get('/galeria/szczegóły/{gallery?}', array('as' => 'gallery_view', 'uses' => 'GalleryController@view'))->where('gallery', '\d+');
 
 //User
 Route::model('user', 'User');
-Route::get('/register', array('as' => 'user_register', 'uses' => 'UserController@register'));
-Route::post('/register', array('as' => 'user_do_register', 'uses' => 'UserController@register'));
-Route::get('/login', array('as' => 'user_login', 'uses' => 'UserController@login'));
-Route::post('/login', array('as' => 'user_do_login', 'uses' => 'UserController@doLogin'));
+Route::get('/rejestracja', array('as' => 'user_register', 'uses' => 'UserController@register'));
+Route::post('/rejestracja', array('as' => 'user_do_register', 'uses' => 'UserController@register'));
+Route::get('/logowanie', array('as' => 'user_login', 'uses' => 'UserController@login'));
+Route::post('/logowanie', array('as' => 'user_do_login', 'uses' => 'UserController@doLogin'));
 Route::get('/logout', array('as' => 'user_logout', 'uses' => 'UserController@logout'));
 
 //Image
 Route::model('image', 'Image');
-Route::post('/image/upload/{gallery}', array('as' => 'image_upload', 'uses' => 'ImageController@upload'))->where('gallery', '\d+');
-Route::get('/image/download/{image?}', array('as' => 'image_download', 'uses' => 'ImageController@download'))->where('image', '\d+');
+Route::post('/zdjęcie/upload/{gallery}', array('as' => 'image_upload', 'uses' => 'ImageController@upload'))->where('gallery', '\d+');
+Route::get('/pobierz-zdjęcie/{image?}', array('as' => 'image_download', 'uses' => 'ImageController@download'))->where('image', '\d+');
 Route::post('/image/edit', array('as' => 'image_do_edit', 'uses' => 'ImageController@doEdit'));
 Route::get('/image/edit/{image?}', array('as' => 'image_edit', 'uses' => 'ImageController@edit'))->where('image', '\d+');
 Route::get('/image/delete/{image?}', array('as' => 'image_delete', 'uses' => 'ImageController@delete'))->where('image', '\d+');
-Route::get('/image/view/{image?}', array('as' => 'image_view', 'uses' => 'ImageController@view'))->where('image', '\d+');
+Route::get('/zdjęcie/szczegóły/{image?}', array('as' => 'image_view', 'uses' => 'ImageController@view'))->where('image', '\d+');
 
 //Notice
 Route::model('notice', 'Notice');
-Route::get('/notice/index', array('as' => 'notice_index', 'uses' => 'NoticeController@index'));
+Route::get('/ogłoszenia', array('as' => 'notice_index', 'uses' => 'NoticeController@index'));
 
 //only admin
 if(User::hasRole('admin')) {
