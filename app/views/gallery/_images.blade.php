@@ -39,7 +39,7 @@
     <div class="image-el pull-left" data-image-id="{{ $img->id }}" >
         <a href="{{ $image_url . $img->id . '/1024' }}" data-lightbox="gallery-{{ $img->gallery_id }}" data-title="{{ $img->name }}">
             <div class="thumbnail">
-                <img src="{{ $image_url . $img->id . '/128' }}" class="img-responsive" alt="{{ $img->name }}">
+                <img src="{{ $image_url . $img->id . '/128' }}" class="img-responsive" alt="Kuśmierki, {{ $img->name }}">
                 <div class="caption">
                     <span class="name">{{ $img->name }}</span>
                 </div>

@@ -12,7 +12,7 @@
         @show
     </title>
     <meta name="author" content="Mariusz Kowalczyk"/>
-    <meta name="description" content="Strona wsi Kuśmierki. Strona zawiera galerię zdjęć, ogłoszenia i inne podstrony"/>
+    <meta name="description" content="Strona wsi Kuśmierki. Kuśmierki – wieś w Polsce położona w województwie śląskim, w powiecie częstochowskim, w gminie Mstów."/>
     <meta name="keywords" content="Kuśmierki, Kusmierki, kuśmierki, kusmierki, strona wsi kusmierki, kusmierki ogłoszenia, kusmierki galeria"/>
 
     <!-- Bootstrap -->
@@ -81,7 +81,7 @@
                                     <li><a href="{{ route('notice_edit') }}">{{ trans('common.nav_add_notice') }}</a></li>
                                     <li class="divider"></li>
                                     @endif
-                                    @if(User::hasRole('edit_notice'))
+                                    @if(User::hasRole('edit_site'))
                                     <li><a href="{{ route('site_index') }}">{{ trans('common.nav_sites') }}</a></li>
                                     <li><a href="{{ route('site_edit') }}">{{ trans('common.nav_add_site') }}</a></li>
                                     <li class="divider"></li>
