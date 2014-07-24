@@ -1,6 +1,10 @@
 <?php
 
 return array(
+    
+        'google'    => array(
+            'api_key'   => 'AIzaSyBPeVUmt8AQYY16rLMU3-ksXSYzT_moeDo'
+        ),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -190,5 +194,6 @@ return array(
 		'View'            => 'Illuminate\Support\Facades\View',
 
 	),
+    
 
 );

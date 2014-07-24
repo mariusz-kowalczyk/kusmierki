@@ -11,6 +11,7 @@ return array(
     'nav_notices' => 'Ogłoszenia',
     'nav_sites' => 'Strony',
     'nav_add_site' => 'Dodaj stronę',
+    'nav_home'  => 'Strona domowa',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
@@ -22,6 +23,10 @@ return array(
     'yes'  => 'Tak',
     'no'  => 'Nie',
     'preview'  => 'Podgląd',
+    'we_recommend'  => 'Polecamy!',
+    'place_your_website'  => 'Umieść swoją stronę',
+    'info_cookie'  => 'Informujemy, że strona wykorzystuje pliki Cookies, w których znajdują się m.in. informacje dotyczące procesu autoryzacji.',
+    'cookie_agree'  => 'Akceptuję',
     
     'label_created_at'  => 'Data utworzenia',
     'label_updated_at'  => 'Data ostatniej edycji',

@@ -120,4 +120,9 @@ class UserController extends BaseController {
         
         return Redirect::route('user_index')->with('notice', Lang::get('user.messages_account_has_been_activated'));
     }
+    
+    public function cookieAgree() {
+        $cookie = Cookie::forever('cookie_agree', true);
+        return Response::json(array('success' => true))->withCookie($cookie);
+    }
 }

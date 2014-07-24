@@ -1,6 +1,10 @@
 <?php
 
 return array(
+    
+        'google'    => array(
+            'api_key'   => 'AIzaSyBPeVUmt8AQYY16rLMU3-ksXSYzT_moeDo'
+        ),
 
 	/*
 	|--------------------------------------------------------------------------
@@ -13,7 +17,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
     
         'images_path'   => app_path() . '/../public/upload/dev/images/',
         'images_url'    => '/upload/dev/images/',

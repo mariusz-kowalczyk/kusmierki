@@ -85,3 +85,17 @@ require app_path().'/helpers/blade.php';
 ClassLoader::addDirectories(array(
 	app_path().'/library',
 ));
+
+App::error(function($exception, $code)
+{
+    
+    $errorsController = new ErrorsController();
+    
+    $method_name = 'code_' . $code;
+    if(method_exists($errorsController, $method_name)) {
+        $response = $errorsController->callAction($method_name, array('exception' => $exception));
+    }else {
+        $response = $errorsController->callAction('code_default', array('code' => $code, 'exception' => $exception));
+    }
+    return $response;
+});

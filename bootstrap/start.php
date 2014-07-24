@@ -32,12 +32,12 @@ $env = $app->detectEnvironment(array(
 
 $env = $app->detectEnvironment(function()
 {
-    $name = php_uname('s') . ' ' . php_uname('n') . ' ' . php_uname('r') . ' ' . php_uname('m');
+    $name = php_uname('s') . ' ' . php_uname('n') . ' ' . php_uname('m');
     switch ($name) {
-        case 'Linux mariusz-VirtualBox 3.13.0-30-generic x86_64' :
+        case 'Linux mariusz-VirtualBox x86_64' :
             return 'dev';
             break;
-        case 'Linux vps77631 2.6.32-042stab090.5 x86_64' :
+        case 'Linux vps77631 x86_64' :
             return 'prod';
             break;
         default :

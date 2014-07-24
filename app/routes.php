@@ -11,9 +11,12 @@
 |
 */
 
+//Home
+Route::get('/', array('as' => 'home_index', 'uses' => 'HomeController@index'));
+
 //Gellery
 Route::model('gallery', 'Gallery');
-Route::get('/{gallery?}', array('as' => 'gallery_index', 'uses' => 'GalleryController@index'))->where('gallery', '\d+');
+Route::get('/galeria/{gallery?}', array('as' => 'gallery_index', 'uses' => 'GalleryController@index'))->where('gallery', '\d+');
 Route::post('/galeria/edit', array('as' => 'gallery_do_edit', 'uses' => 'GalleryController@doEdit'));
 Route::get('/galeria/edit/{gallery?}', array('as' => 'gallery_edit', 'uses' => 'GalleryController@edit'))->where('gallery', '\d+');
 Route::get('/galeria/delete/{gallery?}', array('as' => 'gallery_delete', 'uses' => 'GalleryController@delete'))->where('gallery', '\d+');
@@ -26,6 +29,7 @@ Route::post('/rejestracja', array('as' => 'user_do_register', 'uses' => 'UserCon
 Route::get('/logowanie', array('as' => 'user_login', 'uses' => 'UserController@login'));
 Route::post('/logowanie', array('as' => 'user_do_login', 'uses' => 'UserController@doLogin'));
 Route::get('/logout', array('as' => 'user_logout', 'uses' => 'UserController@logout'));
+Route::get('/cookie', array('as' => 'user_cookie_agree', 'uses' => 'UserController@cookieAgree'));
 
 //Image
 Route::model('image', 'Image');

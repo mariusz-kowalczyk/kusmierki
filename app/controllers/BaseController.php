@@ -175,5 +175,4 @@ class BaseController extends Controller {
         $list = $query->get();
         $this->view->with('list', $list);
     }
-
 }
