@@ -69,6 +69,8 @@ if(User::hasRole('edit_sites')) {
     Route::get('/site/preview/{site}', array('as' => 'site_preview', 'uses' => 'SiteController@show'));
 }
 
+Route::any('/autor', array('as' => 'site_author', 'uses' => 'SiteController@author'));
+
 $route_site_show_generate_pattern = function() {
     $sites = array();
     foreach(Site::where('visibility', '=', 1)->get(array('link')) as $s) {

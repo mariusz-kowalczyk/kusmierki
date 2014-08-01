@@ -21,6 +21,9 @@
                     <li>
                         <a href="{{ route('notice_index') }}" class="btn-link">{{ trans('common.nav_notices') }}</a>
                     </li>
+                    <li>
+                        <a href="{{ route('site_author') }}" class="btn-link">{{ trans('common.nav_author') }}</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-3">
@@ -34,6 +37,9 @@
                 <ul class="footer-menu-list">
                     <li><b>{{ trans('common.we_recommend') }}</b></li>
                     <li>{{ trans('common.place_your_website') }}</li>
+                    <li>
+                        <a href="{{ route('site_author') }}" class="btn-link">{{ trans('common.nav_contact') }}</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-3">

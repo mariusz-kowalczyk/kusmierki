@@ -28,6 +28,18 @@ class SiteController extends BaseController {
     }
     
     public function author() {
-        
+        if(Request::isMethod('post')) {
+            $data = Input::get('question');
+            if(Auth::check()) {
+                $user = Auth::user();
+            }else {
+                $user = null;
+            }
+            Mail::send('emails.question-to-author', array('user' => $user, 'content' => $data['content'], 'contact' => $data['contact']), function($message)
+            {
+                $message->to('m.kowalczyk44446@gmail.com', 'Admin')->subject('Kuśmierki, Pytanie do autora!');
+            });
+            return Redirect::route('site_author')->with('notice', Lang::get('site.messages_question_sent'));
+        }
     }
 }

@@ -12,6 +12,8 @@ return array(
     'nav_sites' => 'Strony',
     'nav_add_site' => 'Dodaj stronę',
     'nav_home'  => 'Strona domowa',
+    'nav_author'  => 'Autor',
+    'nav_contact'  => 'Kontakt',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
@@ -29,6 +31,7 @@ return array(
     'cookie_agree'  => 'Akceptuję',
     'today'  => 'Dzisiaj',
     'tommorow'  => 'Jutro',
+    'send'  => 'Wyślij',
     
     'label_created_at'  => 'Data utworzenia',
     'label_updated_at'  => 'Data ostatniej edycji',
