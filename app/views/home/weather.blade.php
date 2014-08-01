@@ -1,5 +1,5 @@
 <div class="row weather-home">
-    <?php 
+    <?php
         $sum_w = 0;
         $day = 0;
         $date = date('Y-m-d');
@@ -28,6 +28,7 @@
         </p>
         <div class="row">
             @for($k = 0; $k < $count_items; $k++)
+            <?php if($weather->list[$i]->dt < strtotime($date)) { $k--; $i++; continue; } ?>
             <div class="col-md-1 weather-item" style="width: {{ 100 / $count_items }}%">
                 <div class="weather-hour">{{ date('H:i', $weather->list[$i]->dt) }}</div>
                 <img src="http://openweathermap.org/img/w/{{ $weather->list[$i]->weather[0]->icon }}.png" alt="{{ $weather->list[$i]->weather[0]->description }}" />
