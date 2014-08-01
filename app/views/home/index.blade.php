@@ -8,6 +8,9 @@
         W latach 1975-1998 miejscowość administracyjnie należała do województwa częstochowskiego. W latach 1918 - 1939 wieś należała do województwa kieleckiego.
     </p>
 </div>
+
+@include('home/weather')
+
 <div class="row">
     <div class="col-md-7">
         <div id="map-canvas" style="height: 460px;"></div>

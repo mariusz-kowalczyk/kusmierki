@@ -217,3 +217,38 @@ h3.header {
 .footer-menu-list a:hover {
     color: #FFFFFF;
 }
+.wether-day {
+    font-weight: bold;
+    font-size: 16px;
+}
+.weather-home {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 0;
+    margin-right: 0;
+}
+.wether-day small {
+    font-weight: normal;
+    font-size: 12px;
+}
+.wether-day-div {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e5e5;
+    border-top: 1px solid #e5e5e5;
+    border-right: 1px solid #e5e5e5;
+}
+.wether-day-div:first-child {
+    border-left: 1px solid #e5e5e5;
+}
+.weather-item {
+    text-align: center;
+}
+.weather-hour {
+    text-align: center;
+    margin-bottom: 8px;
+    border-bottom: 1px dashed #e5e5e5;
+}
+.weather-temp {
+    font-size: 16px;
+}

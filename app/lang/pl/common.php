@@ -27,9 +27,21 @@ return array(
     'place_your_website'  => 'Umieść swoją stronę',
     'info_cookie'  => 'Informujemy, że strona wykorzystuje pliki Cookies, w których znajdują się m.in. informacje dotyczące procesu autoryzacji.',
     'cookie_agree'  => 'Akceptuję',
+    'today'  => 'Dzisiaj',
+    'tommorow'  => 'Jutro',
     
     'label_created_at'  => 'Data utworzenia',
     'label_updated_at'  => 'Data ostatniej edycji',
     'label_created_by'  => 'Dodane przez',
+    
+    'choice_day'    => array(
+        1 => 'Poniedziałek',
+        2 => 'Wtorek',
+        3 => 'Środa',
+        4 => 'Czwartek',
+        5 => 'Piątek',
+        6 => 'Sobota',
+        7 => 'Niedziela',
+    ),
 ); 
 

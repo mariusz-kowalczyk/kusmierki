@@ -26,4 +26,8 @@ class SiteController extends BaseController {
         }
         $this->view->with('site', $site);
     }
+    
+    public function author() {
+        
+    }
 }

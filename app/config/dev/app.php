@@ -17,7 +17,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
     
         'images_path'   => app_path() . '/../public/upload/dev/images/',
         'images_url'    => '/upload/dev/images/',
