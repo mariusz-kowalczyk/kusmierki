@@ -10,6 +10,9 @@
 <div class="jumbotron">
     <div class="pull-right">
         <div class="fb-like" data-href="http://kusmierki.czest.pl" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
+        <br/>
+        <br/>
+        <div class="g-plus" data-action="share" data-height="24" data-href="http://kusmierki.czest.pl"></div>
     </div>
     <h1>Kuśmierki</h1>
     <p>
@@ -63,6 +66,15 @@
 
 @section('footer-script')
 @parent
+<script type="text/javascript">
+    window.___gcfg = {lang: 'pl'};
+
+    (function() {
+      var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+      po.src = 'https://apis.google.com/js/platform.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+</script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('app.google.api_key') }}"></script>
 <script type="text/javascript">
     $(function(){
