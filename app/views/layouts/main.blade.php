@@ -53,8 +53,18 @@
         ga('send', 'pageview');
     </script>
     @endif
+    @section('header-script')
+    @show
   </head>
   <body>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.0";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
     <div class="wrap">
         <div class="container">
             <div id="content">
@@ -93,6 +103,9 @@
             @endif
         </div>
     </header>
+    <div id="fb-box">
+        <div class="fb-like-box" data-href="https://www.facebook.com/pages/Kusmierki/105401169492125?fref=ts" data-width="286" data-height="397" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="false"></div>
+    </div>
     @include('layouts._footer')
     @section('footer-script')
     <script type="text/javascript">
@@ -100,6 +113,12 @@
             setTimeout(function() {
                 $('.alert-messages').fadeOut();
             }, 3000);
+            
+            $('#fb-box').hover(function() {
+                $(this).stop(true, false).animate({right: '0'}, 500);
+            }, function() {
+                $(this).stop(true, false).animate({right: '-300px'}, 500);                
+            });
         });
     </script>
     @show

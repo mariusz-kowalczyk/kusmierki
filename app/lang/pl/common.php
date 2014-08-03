@@ -14,6 +14,7 @@ return array(
     'nav_home'  => 'Strona domowa',
     'nav_author'  => 'Autor',
     'nav_contact'  => 'Kontakt',
+    'nav_weather'  => 'Pogoda',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',

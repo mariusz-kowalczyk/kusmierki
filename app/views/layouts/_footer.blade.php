@@ -22,6 +22,9 @@
                         <a href="{{ route('notice_index') }}" class="btn-link">{{ trans('common.nav_notices') }}</a>
                     </li>
                     <li>
+                        <a href="{{ route('weather_index') }}" class="btn-link">{{ trans('common.nav_weather') }}</a>
+                    </li>
+                    <li>
                         <a href="{{ route('site_author') }}" class="btn-link">{{ trans('common.nav_author') }}</a>
                     </li>
                 </ul>

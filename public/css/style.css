@@ -223,7 +223,7 @@ h3.header {
 }
 .weather-home {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     margin-left: 0;
     margin-right: 0;
 }
@@ -251,4 +251,68 @@ h3.header {
 }
 .weather-temp {
     font-size: 16px;
+}
+.item-dey {
+    font-weight: bold;
+    font-size: 16px;
+}
+.item-dey small {
+    font-size: 12px;
+    font-weight: normal;
+}
+.weather-day {
+    margin-bottom: 30px;
+}
+.weather-main-info {
+    text-align: center;
+    margin-bottom: 15px;
+}
+.weather-temp-max {
+    margin-top: 6px;
+}
+.weather-temp-max, .weather-temp-min {
+    font-size: 12px;
+}
+.weather-charts-temp {
+    margin-top: 20px;
+}
+.weather-main-details {
+    margin-top: 10px;
+    display: none;
+    padding: 20px;
+    width: 50%;
+}
+.weather-details-hour {
+    padding-top: 15px;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #e5e5e5;
+    font-weight: bold;
+}
+.weather-details-item {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 15px;
+}
+.weather-main-details > .weather-details-item:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.weather-main-details > .weather-details-item:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+.break-15 {
+    display: block;
+    clear: both;
+    height: 15px;
+}
+#fb-box {
+    background: url("../images/fb_box.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    width: 345px;
+    height: 408px;
+    display: block;
+    position: fixed;
+    top: 50%;
+    right: -300px;
+    margin-top: -202px;
+    padding-top: 5px;
+    padding-left: 53px;
 }

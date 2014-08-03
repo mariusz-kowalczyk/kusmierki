@@ -76,7 +76,7 @@ class Weather {
     public static function forecast() {
         $data = self::getCache('forecast');
         if(empty($data)) {
-            $url = 'http://api.openweathermap.org/data/2.5/forecast?' . self::getLocationForApi();
+            $url = 'http://api.openweathermap.org/data/2.5/forecast?' . self::getLocationForApi() . '&lang=pl';
             $data_json = file_get_contents($url);
             $data = json_decode($data_json);
             self::setCache('forecast', $data);

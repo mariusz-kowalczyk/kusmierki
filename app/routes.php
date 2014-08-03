@@ -44,6 +44,9 @@ Route::get('/zdjęcie/szczegóły/{image?}', array('as' => 'image_view', 'uses' 
 Route::model('notice', 'Notice');
 Route::get('/ogłoszenia', array('as' => 'notice_index', 'uses' => 'NoticeController@index'));
 
+//Weather
+Route::get('/pogoda', array('as' => 'weather_index', 'uses' => 'WeatherController@index'));
+
 //only admin
 if(User::hasRole('admin')) {
     Route::get('/user/index', array('as' => 'user_index', 'uses' => 'UserController@index'));

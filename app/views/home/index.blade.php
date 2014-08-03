@@ -1,11 +1,3 @@
-<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.0";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
 <br/>
 <div class="jumbotron">
     <div class="pull-right">
@@ -24,7 +16,10 @@
 </div>
 
 @include('home/weather')
-
+<div class="pull-right">
+    <a href="{{ route('weather_index') }}" class="btn btn-primary btn-sm">{{ trans('common.more') }}</a>
+</div>
+<div class="clearfix break-15"></div>
 <div class="row">
     <div class="col-md-7">
         <div id="map-canvas" style="height: 460px;"></div>
@@ -46,6 +41,11 @@
             </div>
             @endforeach
         </div>
+        <div class="clearfix"></div>
+        <div class="pull-right">
+            <a href="{{ route('gallery_index') }}" class="btn btn-primary btn-sm">{{ trans('common.more') }}</a>
+        </div>
+        <div class="clearfix"></div>
     </div>
 </div>
 
@@ -62,6 +62,9 @@
     <div class="panel-body">
         {{ $notice->content }}
     </div>
+</div>
+<div class="pull-right">
+    <a href="{{ route('notice_index') }}" class="btn btn-primary btn-sm">{{ trans('common.more') }}</a>
 </div>
 
 @section('footer-script')
