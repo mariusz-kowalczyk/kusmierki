@@ -46,6 +46,7 @@ Route::get('/ogłoszenia', array('as' => 'notice_index', 'uses' => 'NoticeContro
 
 //Weather
 Route::get('/pogoda', array('as' => 'weather_index', 'uses' => 'WeatherController@index'));
+Route::get('/pogoda-długoterminowa', array('as' => 'weather_daily', 'uses' => 'WeatherController@daily'));
 
 //only admin
 if(User::hasRole('admin')) {

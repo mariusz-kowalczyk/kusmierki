@@ -26,6 +26,7 @@
                 <li><a href="{{ route('site_show', array('site_link' => $site->link)) }}">{{ $site->title }}</a></li>
                 @endforeach
                 <li><a href="{{ route('weather_index') }}">{{ trans('common.nav_weather') }}</a></li>
+                <li><a href="{{ route('weather_daily') }}">{{ trans('common.nav_weather_daily') }}</a></li>
                 <li><a href="{{ route('site_author') }}">{{ trans('common.nav_author') }}</a></li>
             </ul>
         </div>

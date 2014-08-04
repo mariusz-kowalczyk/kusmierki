@@ -23,4 +23,11 @@ class WeatherController extends BaseController {
                 ->with('weather_days', $weather_days);
     }
     
+    public function daily() {
+        $weather = Weather::forecastDaily();
+        $this->view
+                ->with('count_days', count($weather->list))
+                ->with('weather', $weather);
+    }
+    
 }

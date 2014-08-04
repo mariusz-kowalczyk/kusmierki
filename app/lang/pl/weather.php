@@ -2,7 +2,10 @@
 
 return array(
     'title_index' => 'Kuśmierki, Pogoda',
+    'title_daily' => 'Kuśmierki, Pogoda długoterminowa',
+    
     'message_index' => 'Pogoda',
+    'message_daily' => 'Pogoda długoterminowa',
     'message_temp_charts_title' => 'Temperatura w ciągu dnia',
     
     'label_temp_charts_y' => "Temperatura (°C)",
@@ -18,5 +21,7 @@ return array(
     'details'  => 'Szczegóły',
     'max'  => 'Max',
     'min'  => 'Min',
+    'eve'  => 'Wieczór',
+    'morn'  => 'Rano',
 );
 

@@ -316,3 +316,49 @@ h3.header {
     padding-top: 5px;
     padding-left: 53px;
 }
+.weather-daily-day {
+    margin-bottom: 40px;
+}
+.weather-daily-date {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px dashed #e5e5e5;
+}
+.weather-daily-date small {
+    font-weight: normal;
+    font-size: 14px;
+}
+.weather-daily-main {
+    text-align: center;
+}
+.weather-daily-description {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+.weather-daily-temp {
+    font-size: 12px;
+}
+.weather-daily-temp-main {
+    font-size: 20px;
+    margin: 3px;
+    font-weight: bold;
+}
+.weather-daily-temp-day, .weather-daily-temp-night {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.weather-daily-temp-day {
+    background-color: rgba(255, 255, 0, 0.1);
+}
+.weather-daily-temp-night {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+.weather-daily-clouds, .weather-daily-speed {
+    font-size: 14px;
+}
+.weather-daily-clouds .wd-label, .weather-daily-speed .wd-label {
+    font-size: 12px;
+}
+.weather-daily-clouds {
+    margin-top: 4px;
+}

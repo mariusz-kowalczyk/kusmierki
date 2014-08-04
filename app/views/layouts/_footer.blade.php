@@ -22,9 +22,6 @@
                         <a href="{{ route('notice_index') }}" class="btn-link">{{ trans('common.nav_notices') }}</a>
                     </li>
                     <li>
-                        <a href="{{ route('weather_index') }}" class="btn-link">{{ trans('common.nav_weather') }}</a>
-                    </li>
-                    <li>
                         <a href="{{ route('site_author') }}" class="btn-link">{{ trans('common.nav_author') }}</a>
                     </li>
                 </ul>
@@ -34,6 +31,12 @@
                     @foreach(Site::where('visibility', '=', 1)->get() as $site)
                     <li><a href="{{ route('site_show', array('site_link' => $site->link)) }}">{{ $site->title }}</a></li>
                     @endforeach
+                    <li>
+                        <a href="{{ route('weather_index') }}" class="btn-link">{{ trans('common.nav_weather') }}</a>
+                    </li>
+                    <li>
+                        <a href="{{ route('weather_daily') }}" class="btn-link">{{ trans('common.nav_weather_daily') }}</a>
+                    </li>
                 </ul>
             </div>
             <div class="col-md-3">

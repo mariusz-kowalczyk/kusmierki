@@ -15,6 +15,7 @@ return array(
     'nav_author'  => 'Autor',
     'nav_contact'  => 'Kontakt',
     'nav_weather'  => 'Pogoda',
+    'nav_weather_daily'  => 'Pogoda długoterminowa',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',

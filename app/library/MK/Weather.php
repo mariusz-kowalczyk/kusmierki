@@ -76,7 +76,7 @@ class Weather {
     public static function forecast() {
         $data = self::getCache('forecast');
         if(empty($data)) {
-            $url = 'http://api.openweathermap.org/data/2.5/forecast?' . self::getLocationForApi() . '&lang=pl';
+            $url = 'http://api.openweathermap.org/data/2.5/forecast?' . self::getLocationForApi() . '&lang=pl&mode=json';
             $data_json = file_get_contents($url);
             $data = json_decode($data_json);
             self::setCache('forecast', $data);
@@ -100,6 +100,33 @@ class Weather {
                 break;
         }
         return $count;
+    }
+    
+    /**
+     * Zwraca pogodą długoterminową
+     * 
+     * @return mixed
+     */
+    public static function forecastDaily() {
+        $data = self::getCache('forecast-daily');
+        if(empty($data)) {
+            $tmp_data;
+            $max_cnt = 0;
+            for($i=16;$i>11;$i--) {
+                $url = 'http://api.openweathermap.org/data/2.5/forecast/daily?' . self::getLocationForApi() . '&lang=pl&mode=json&cnt=' . $i;
+                $data_json = file_get_contents($url);
+                $data = json_decode($data_json);
+                if($max_cnt < $data->cnt) {
+                    $max_cnt = $data->cnt;
+                    $tmp_data = $data;
+                }
+                if($data->cnt >= $i) 
+                    break;
+            }
+            $data = $tmp_data;
+            self::setCache('forecast-daily', $data);
+        }
+        return $data;
     }
     
 }
