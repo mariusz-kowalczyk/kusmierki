@@ -1,11 +1,13 @@
 <br/>
 <div class="jumbotron">
+    @if(!Agent::isMobile())
     <div class="pull-right">
         <div class="fb-like" data-href="http://kusmierki.czest.pl" data-layout="standard" data-action="like" data-show-faces="false" data-share="true"></div>
         <br/>
         <br/>
         <div class="g-plus" data-action="share" data-height="24" data-href="http://kusmierki.czest.pl"></div>
     </div>
+    @endif
     <h1>Kuśmierki</h1>
     <p>
         Wieś w Polsce położona w województwie śląskim, w powiecie częstochowskim, w gminie Mstów.
@@ -21,9 +23,11 @@
 </div>
 <div class="clearfix break-15"></div>
 <div class="row">
+    @if(!Agent::isMobile())
     <div class="col-md-7">
         <div id="map-canvas" style="height: 460px;"></div>
     </div>
+    @endif
     <div class="col-md-5">
         <div class="well"><b>{{ trans('home.message_last_images') }}</b></div>
         
@@ -81,6 +85,7 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{ Config::get('app.google.api_key') }}"></script>
 <script type="text/javascript">
     $(function(){
+        @if(!Agent::isMobile())
         var position = new google.maps.LatLng(50.807547, 19.40828);
         var mapOptions = {
             zoom: 14,
@@ -101,6 +106,7 @@
         google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker);
         });
+        @endif
     });
 </script>
 @stop

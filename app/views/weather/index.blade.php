@@ -15,23 +15,25 @@
         </span>
     </div>
     <div class="weather-day">
-        <div class="row weather-main-info">
-            <div class="col-md-1"></div>
-            @foreach($w_day as $item)
-            <div class="col-md-1">
-                <div class="weather-hour">{{ date('H:i', $item->dt) }}</div>
-                <img src="http://openweathermap.org/img/w/{{ $item->weather[0]->icon }}.png" alt="{{ $item->weather[0]->description }}" />
-                <div class="weather-temp">
-                    {{ round($item->main->temp - 273.15, 1) }}&#176;C
+        <div id="weather-main-info-content">
+            <div class="row weather-main-info">
+                <div class="col-md-1"></div>
+                @foreach($w_day as $item)
+                <div class="col-md-1">
+                    <div class="weather-hour">{{ date('H:i', $item->dt) }}</div>
+                    <img src="http://openweathermap.org/img/w/{{ $item->weather[0]->icon }}.png" alt="{{ $item->weather[0]->description }}" />
+                    <div class="weather-temp">
+                        {{ round($item->main->temp - 273.15, 1) }}&#176;C
+                    </div>
+                    <div class="weather-temp-max">
+                        <small>{{ trans('weather.max') }}: </small>{{ round($item->main->temp_max - 273.15, 1) }}&#176;C
+                    </div>
+                    <div class="weather-temp-min">
+                        <small>{{ trans('weather.min') }}: </small>{{ round($item->main->temp_min - 273.15, 1) }}&#176;C
+                    </div>
                 </div>
-                <div class="weather-temp-max">
-                    <small>{{ trans('weather.max') }}: </small>{{ round($item->main->temp_max - 273.15, 1) }}&#176;C
-                </div>
-                <div class="weather-temp-min">
-                    <small>{{ trans('weather.min') }}: </small>{{ round($item->main->temp_min - 273.15, 1) }}&#176;C
-                </div>
+                @endforeach
             </div>
-            @endforeach
         </div>
         <button type="button" class="btn btn-primary" onclick="$('#weather-main-details-{{ $date }}').slideToggle()">{{ trans('weather.details') }}</button>
         <div class="weather-main-details" id="weather-main-details-{{ $date }}">

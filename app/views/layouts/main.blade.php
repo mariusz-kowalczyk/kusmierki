@@ -55,8 +55,13 @@
     @endif
     @section('header-script')
     @show
+    
+    @if(Agent::isMobile())
+    {{ HTML::style('css/mobile.css') }}
+    @endif
   </head>
   <body>
+    @if(!Agent::isMobile())
     <div id="fb-root"></div>
     <script>(function(d, s, id) {
       var js, fjs = d.getElementsByTagName(s)[0];
@@ -65,6 +70,7 @@
       js.src = "//connect.facebook.net/pl_PL/sdk.js#xfbml=1&version=v2.0";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));</script>
+    @endif
     <div class="wrap">
         <div class="container">
             <div id="content">
@@ -103,9 +109,11 @@
             @endif
         </div>
     </header>
+    @if(!Agent::isMobile())
     <div id="fb-box">
         <div class="fb-like-box" data-href="https://www.facebook.com/pages/Kusmierki/105401169492125?fref=ts" data-width="286" data-height="397" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="false"></div>
     </div>
+    @endif
     @include('layouts._footer')
     @section('footer-script')
     <script type="text/javascript">
