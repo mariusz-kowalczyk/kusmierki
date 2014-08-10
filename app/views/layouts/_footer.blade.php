@@ -37,6 +37,7 @@
                     <li>
                         <a href="{{ route('weather_daily') }}" class="btn-link">{{ trans('common.nav_weather_daily') }}</a>
                     </li>
+                    <li><a href="{{ route('forum_index') }}" class="btn-link">{{ trans('common.nav_forum') }}</a></li>
                 </ul>
             </div>
             <div class="col-md-3">

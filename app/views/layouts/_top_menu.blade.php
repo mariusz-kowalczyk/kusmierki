@@ -26,6 +26,7 @@
                 @foreach(Site::where('visibility', '=', 1)->get() as $site)
                 <li><a href="{{ route('site_show', array('site_link' => $site->link)) }}">{{ $site->title }}</a></li>
                 @endforeach
+                <li><a href="{{ route('forum_index') }}">{{ trans('common.nav_forum') }}</a></li>
                 <li><a href="{{ route('weather_index') }}">{{ trans('common.nav_weather') }}</a></li>
                 <li><a href="{{ route('weather_daily') }}">{{ trans('common.nav_weather_daily') }}</a></li>
                 <li><a href="{{ route('site_author') }}">{{ trans('common.nav_author') }}</a></li>
@@ -71,6 +72,7 @@
             @foreach(Site::where('visibility', '=', 1)->get() as $site)
             <li><a href="{{ route('site_show', array('site_link' => $site->link)) }}">{{ $site->title }}</a></li>
             @endforeach
+            <li><a href="{{ route('forum_index') }}">{{ trans('common.nav_forum') }}</a></li>
             <li><a href="{{ route('weather_index') }}">{{ trans('common.nav_weather') }}</a></li>
             <li><a href="{{ route('weather_daily') }}">{{ trans('common.nav_weather_daily') }}</a></li>
             <li><a href="{{ route('site_author') }}">{{ trans('common.nav_author') }}</a></li>

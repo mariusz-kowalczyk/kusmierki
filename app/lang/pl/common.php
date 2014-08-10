@@ -16,6 +16,7 @@ return array(
     'nav_contact'  => 'Kontakt',
     'nav_weather'  => 'Pogoda',
     'nav_weather_daily'  => 'Pogoda długoterminowa',
+    'nav_forum'  => 'Forum',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
@@ -34,6 +35,8 @@ return array(
     'today'  => 'Dzisiaj',
     'tommorow'  => 'Jutro',
     'send'  => 'Wyślij',
+    'i'  => 'Ja',
+    'refresh'  => 'Odśwież',
     
     'label_created_at'  => 'Data utworzenia',
     'label_updated_at'  => 'Data ostatniej edycji',

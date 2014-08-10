@@ -22,9 +22,10 @@ class Weather {
      * Zwraca dane z cache, jeżeli nie ma lub są stare zwraca null
      * 
      * @param string $key
+     * @param string $get_expired - zwraca dane nawet jeżeli wygasły
      * @return null|mixed
      */
-    private static function getCache($key) {
+    private static function getCache($key, $get_expired = false) {
         $path = storage_path('weather');
         if(!file_exists($path)) {
             mkdir($path);
@@ -35,7 +36,7 @@ class Weather {
             return null;
         }
         $last_time = file_get_contents($file_time);
-        if(time() - self::getTimeForRefreshCache() < $last_time) {
+        if($get_expired || time() - self::getTimeForRefreshCache() < $last_time) {
             $data = file_get_contents($file_data);
             return json_decode($data);
         }else {
@@ -77,9 +78,14 @@ class Weather {
         $data = self::getCache('forecast');
         if(empty($data)) {
             $url = 'http://api.openweathermap.org/data/2.5/forecast?' . self::getLocationForApi() . '&lang=pl&mode=json';
-            $data_json = file_get_contents($url);
-            $data = json_decode($data_json);
-            self::setCache('forecast', $data);
+            try {
+                $data_json = file_get_contents($url);
+                $data = json_decode($data_json);
+                self::setCache('forecast', $data);
+            }catch(\Exception $err) {
+                $data = self::getCache('forecast', true);
+                self::setCache('forecast', $data);
+            }
         }
         return $data;
     }
@@ -110,21 +116,26 @@ class Weather {
     public static function forecastDaily() {
         $data = self::getCache('forecast-daily');
         if(empty($data)) {
-            $tmp_data;
-            $max_cnt = 0;
-            for($i=16;$i>11;$i--) {
-                $url = 'http://api.openweathermap.org/data/2.5/forecast/daily?' . self::getLocationForApi() . '&lang=pl&mode=json&cnt=' . $i;
-                $data_json = file_get_contents($url);
-                $data = json_decode($data_json);
-                if($max_cnt < $data->cnt) {
-                    $max_cnt = $data->cnt;
-                    $tmp_data = $data;
+            try {
+                $tmp_data;
+                $max_cnt = 0;
+                for($i=16;$i>11;$i--) {
+                    $url = 'http://api.openweathermap.org/data/2.5/forecast/daily?' . self::getLocationForApi() . '&lang=pl&mode=json&cnt=' . $i;
+                    $data_json = file_get_contents($url);
+                    $data = json_decode($data_json);
+                    if($max_cnt < $data->cnt) {
+                        $max_cnt = $data->cnt;
+                        $tmp_data = $data;
+                    }
+                    if($data->cnt >= $i) 
+                        break;
                 }
-                if($data->cnt >= $i) 
-                    break;
+                $data = $tmp_data;
+                self::setCache('forecast-daily', $data);
+            }catch(\Exception $err) {
+                $data = self::getCache('forecast-daily', true);
+                self::setCache('forecast-daily', $data);
             }
-            $data = $tmp_data;
-            self::setCache('forecast-daily', $data);
         }
         return $data;
     }

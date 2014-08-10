@@ -51,7 +51,7 @@ class UserController extends BaseController {
         $remeber = empty($data['remeber_my']) ? false : true;
         if (Auth::attempt(array('login' => $data['login'], 'password' => $data['password'], 'status' => User::STATUS_ACTIVE), $remeber) || Auth::attempt(array('email' => $data['login'], 'password' => $data['password'], 'status' => User::STATUS_ACTIVE), $remeber))
         {
-            return Redirect::route('gallery_index')->with('notice', Lang::get('user.messages_you_was_logged'));
+            return Redirect::route('home_index')->with('notice', Lang::get('user.messages_you_was_logged'));
         }else {
             $user = User::where('login', '=', $data['login'])
                     ->orWhere('email', '=', $data['login'])

@@ -28,6 +28,7 @@
     {{ HTML::script('js/jquery-1.11.1.min.js') }}
     {{ HTML::script('js/bootstrap.min.js') }}
     
+    {{ HTML::script('js/langs/pl.js') }}
     {{ HTML::script('js/functions.js') }}
     
     <!-- Validation Engine -->

@@ -195,7 +195,7 @@ h3.header {
 }
 
 #footer {
-    position: fixed;
+    position: relative;
     bottom: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.7);
@@ -361,4 +361,11 @@ h3.header {
 }
 .weather-daily-clouds {
     margin-top: 4px;
+}
+#forum-topics-list .topic-details {
+    font-size: 10px;
+}
+.forum-row-details {
+    font-size: 11px;
+    margin-top: -15px;
 }

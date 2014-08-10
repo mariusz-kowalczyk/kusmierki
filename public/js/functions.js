@@ -52,3 +52,17 @@ function in_array(needle, haystack) {
     }
     return false;
 }
+
+function trans (key, params) {
+    var t = key.split('.');
+    var tmp = Lang;
+    for(var i in t) {
+        tmp = tmp[t[i]];
+    }
+    if(params) {
+        for(var i in params) {
+            tmp = tmp.replace(':' + i, params[i]);
+        }
+    }
+    return tmp;
+}

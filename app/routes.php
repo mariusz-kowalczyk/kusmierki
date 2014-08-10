@@ -48,6 +48,12 @@ Route::get('/ogłoszenia', array('as' => 'notice_index', 'uses' => 'NoticeContro
 Route::get('/pogoda', array('as' => 'weather_index', 'uses' => 'WeatherController@index'));
 Route::get('/pogoda-długoterminowa', array('as' => 'weather_daily', 'uses' => 'WeatherController@daily'));
 
+//Forum
+Route::get('/forum', array('as' => 'forum_index', 'uses' => 'ForumController@index'));
+Route::any('/forum/create-topic', array('as' => 'forum_create_topic', 'before' => 'auth', 'uses' => 'ForumController@createTopic'));
+Route::get('/forum/{name}/{forum_topic_id}', array('as' => 'forum_show', 'uses' => 'ForumController@show'));
+Route::post('/forum/write', array('as' => 'forum_write', 'before' => 'auth', 'uses' => 'ForumController@write'));
+
 //only admin
 if(User::hasRole('admin')) {
     Route::get('/user/index', array('as' => 'user_index', 'uses' => 'UserController@index'));
