@@ -144,13 +144,16 @@ class BaseController extends Controller {
         if(!$validator->fails()) {
             $item = $this->preEditSave($item, $data);
             $item->save();
-            $this->postEditSave($item, $data);
+            $ret = $this->postEditSave($item, $data);
             if(Request::ajax()) {
                 return Response::json(array(
                     'success'   => true,
                     $this->model_lc_name    => $item->toArray()
                 ));
             }else {
+                if($ret) {
+                    return $ret;
+                }
                 return Redirect::route($this->model_lc_name . '_index')->with('notice', Lang::get($this->model_lc_name . '.messages_saved'));
             }
         }else { 

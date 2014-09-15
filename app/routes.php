@@ -30,6 +30,8 @@ Route::get('/logowanie', array('as' => 'user_login', 'uses' => 'UserController@l
 Route::post('/logowanie', array('as' => 'user_do_login', 'uses' => 'UserController@doLogin'));
 Route::get('/logout', array('as' => 'user_logout', 'uses' => 'UserController@logout'));
 Route::get('/cookie', array('as' => 'user_cookie_agree', 'uses' => 'UserController@cookieAgree'));
+Route::get('/account', array('as' => 'user_account', 'before' => 'auth', 'uses' => 'UserController@account'));
+Route::post('/account', array('as' => 'user_account', 'before' => 'auth', 'uses' => 'UserController@doAccount'));
 
 //Image
 Route::model('image', 'Image');

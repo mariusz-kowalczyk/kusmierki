@@ -5,6 +5,7 @@ return array(
     'title_register' => 'Kuśmierki, Rejestracja użytkownika',
     'title_index' => 'Kuśmierki, Lista użytkoników',
     'title_edit' => 'Kuśmierki, Edycja użytkownika',
+    'title_account' => 'Kuśmierki, Edycja profilu',
     
     'message_register'  => 'Rejestracja użytkownika',
     'messages_registered'  => 'Rejestracja przebiegła pomyślnie. W najbliższym czasie twoje konto zostanie aktywowane. Jeżeli podałeś adres e-mail otrzymasz powiadomienie.',
@@ -20,6 +21,7 @@ return array(
     'messages_saved' => 'Konto użytkownika zostało zapisane',
     'messages_account_has_been_activated' => 'Konto użytkownika zostało aktywowane',
     'messages_your_account_has_been_activated' => 'Twoje konto zostało aktywowane',
+    'messages_account_has_been_saved' => 'Twoje konto zostało zaaktualizowane',
     
     'label_login'   => 'Login',
     'label_password'   => 'Hasło',
@@ -31,6 +33,7 @@ return array(
     'label_login_or_email'   => 'Login lub E-mail',
     'label_status'   => 'Status',
     'label_roles'   => 'Role',
+    'label_gg'   => 'Gadu Gadu',
     'button_active' => 'Aktywuj',
     
     'button_register'   => 'Zarejstruj',

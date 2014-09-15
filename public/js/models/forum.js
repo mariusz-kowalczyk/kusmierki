@@ -19,15 +19,18 @@ Forum = {
         var now = new Date();
         var s = (now.getTime() - date.getTime()) / 1000;
         var d = s / 3600 / 24;
+        var now = new Date();
+        var yest = new Date();
+        yest.setDate(yest.getDate() - 1);
         if(s < 60) {
             $el.html(trans('common.time_ago', {ago: Math.round(s) + 's'}));
             setTimeout(Forum.showRowTime, 1000, $el, date);
         }else if(s < 3600) {
             $el.html(trans('common.time_ago', {ago: Math.round(s/60) + 'min'}));
             setTimeout(Forum.showRowTime, 60000, $el, date);
-        }else if(d < 1) {
+        }else if(now.toDateString() == date.toDateString()) {
             $el.html(trans('common.today') + ' ' + date.toLocaleTimeString());
-        }else if(d < 2) {
+        }else if(yest.toDateString() == date.toDateString()) {
             $el.html(trans('common.yesterday') + ' ' + date.toLocaleTimeString());
         }else {
             $el.html(date.toLocaleString());

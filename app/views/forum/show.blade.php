@@ -53,6 +53,7 @@
 {{ HTML::script('js/models/forum.js') }}
 {{ HTML::script('libs/ckeditor/ckeditor.js') }}
 <script type="text/javascript">
+    @if(Auth::check())
     CKEDITOR.replace( 'forum_row-text', {
         height: 100,
         toolbar: [
@@ -61,7 +62,7 @@
             { name: 'insert', items: [ 'Image', 'HorizontalRule', 'SpecialChar', 'Smiley' ] },
         ]
     });
-
+    @endif
     $(function() {
         $('#forum-row-form').validationEngine();
         setTimeout(function() {

@@ -31,7 +31,7 @@ class User extends BaseModel implements UserInterface, RemindableInterface {
      */
     protected $hidden = array('password', 'remember_token');
     
-    protected $fillable = array('login', 'password', 'email', 'firstname', 'lastname', 'birthday');
+    protected $fillable = array('login', 'password', 'email', 'firstname', 'lastname', 'birthday', 'gg');
     
     public static $rules = array(
         'login'         => 'required|unique:users',

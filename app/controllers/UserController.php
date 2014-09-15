@@ -101,10 +101,14 @@ class UserController extends BaseController {
      * @param array $data
      */
     protected function postEditSave($item, $data) {
-        if(!isset($data['roles'])) {
-            $data['roles'] = array();
+        if(User::hasRole('admin')) {
+            if(!isset($data['roles'])) {
+                $data['roles'] = array();
+            }
+            $item->roles()->sync($data['roles']);
+        }else {
+            return Redirect::route('home_index')->with('notice', Lang::get('user.messages_account_has_been_saved'));
         }
-        $item->roles()->sync($data['roles']);
     }
     
     public function active($user) {
@@ -124,5 +128,14 @@ class UserController extends BaseController {
     public function cookieAgree() {
         $cookie = Cookie::forever('cookie_agree', true);
         return Response::json(array('success' => true))->withCookie($cookie);
+    }
+    
+    public function account() {
+        $item = User::find(Auth::id());
+        return parent::edit($item);
+    }
+    
+    public function doAccount() {        
+        return parent::doEdit();
     }
 }

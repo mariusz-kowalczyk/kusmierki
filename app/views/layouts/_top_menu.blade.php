@@ -30,13 +30,15 @@
                 <li><a href="{{ route('weather_index') }}">{{ trans('common.nav_weather') }}</a></li>
                 <li><a href="{{ route('weather_daily') }}">{{ trans('common.nav_weather_daily') }}</a></li>
                 <li><a href="{{ route('site_author') }}">{{ trans('common.nav_author') }}</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ route('user_logout') }}">{{ trans('common.nav_logout') }}</a></li>
             </ul>
         </div>
 
         <a href="{{ route('gallery_index') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_gallery') }}</a>
         <a href="{{ route('notice_index') }}" class="btn btn-lg btn-success">{{ Lang::get('common.nav_notices') }}</a>
         @if(Auth::check())
-        <a href="{{ route('user_logout') }}" class="btn btn-lg btn-danger">{{ Lang::get('common.nav_logout') }}</a>
+        <a href="{{ route('user_account') }}" class="btn btn-lg btn-danger">{{ Lang::get('common.nav_account') }}</a>
         @else
         <a href="{{ route('user_register') }}" class="btn btn-lg btn-warning">{{ Lang::get('common.nav_register') }}</a>
         <a href="{{ route('user_login') }}" class="btn btn-lg btn-primary">{{ Lang::get('common.nav_login') }}</a>

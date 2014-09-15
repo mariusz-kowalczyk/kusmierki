@@ -17,6 +17,7 @@ return array(
     'nav_weather'  => 'Pogoda',
     'nav_weather_daily'  => 'Pogoda długoterminowa',
     'nav_forum'  => 'Forum',
+    'nav_account'  => 'Moje konto',
     
     'cancel' => 'Anuluj',
     'save' => 'Zapisz',
