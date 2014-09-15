@@ -13,6 +13,9 @@
 
 //Home
 Route::get('/', array('as' => 'home_index', 'uses' => 'HomeController@index'));
+Route::get('/test-GG', array('as' => 'home_test_gg', 'uses' => 'HomeController@testGG'));
+
+Route::get('/gg-pull', array('as' => 'gg-pull', 'uses' => 'GGController@pull'));
 
 //Gellery
 Route::model('gallery', 'Gallery');

@@ -5,6 +5,11 @@ return array(
         'google'    => array(
             'api_key'   => 'AIzaSyBPeVUmt8AQYY16rLMU3-ksXSYzT_moeDo'
         ),
+    
+        'gg'    => array(
+            'client_id' => '31329a781d3711bb5073c44e7f5ed792',
+            'client_secret' => '19f62e9512575c8071ab6adf6640e15c',
+        ),
 
 	/*
 	|--------------------------------------------------------------------------

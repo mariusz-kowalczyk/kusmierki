@@ -20,4 +20,10 @@ class HomeController extends BaseController {
                 ->with('images', $images)
             ;
     }
+    
+    public function testGG() {
+        MK\GG::test();
+        
+        die;
+    }
 }
