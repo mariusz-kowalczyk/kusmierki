@@ -101,7 +101,7 @@ class UserController extends BaseController {
      * @param array $data
      */
     protected function postEditSave($item, $data) {
-        if(User::hasRole('admin')) {
+        if(User::hasRole('admin') && Route::currentRouteName() == 'user_do_edit') {
             if(!isset($data['roles'])) {
                 $data['roles'] = array();
             }

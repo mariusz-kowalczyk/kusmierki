@@ -38,6 +38,7 @@ return array(
     'send'  => 'Wyślij',
     'i'  => 'Ja',
     'refresh'  => 'Odśwież',
+    'details'  => 'Szczegóły',
     
     'label_created_at'  => 'Data utworzenia',
     'label_updated_at'  => 'Data ostatniej edycji',

@@ -17,11 +17,14 @@
     </p>
 </div>
 
+@if(!empty($weather->list))
 @include('home/weather')
 <div class="pull-right">
     <a href="{{ route('weather_index') }}" class="btn btn-primary btn-sm">{{ trans('common.more') }}</a>
 </div>
 <div class="clearfix break-15"></div>
+@endif
+
 <div class="row">
     @if(!Agent::isMobile())
     <div class="col-md-7">

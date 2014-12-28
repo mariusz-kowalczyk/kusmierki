@@ -30,8 +30,10 @@
                 <li><a href="{{ route('weather_index') }}">{{ trans('common.nav_weather') }}</a></li>
                 <li><a href="{{ route('weather_daily') }}">{{ trans('common.nav_weather_daily') }}</a></li>
                 <li><a href="{{ route('site_author') }}">{{ trans('common.nav_author') }}</a></li>
+                @if(Auth::check())
                 <li class="divider"></li>
                 <li><a href="{{ route('user_logout') }}">{{ trans('common.nav_logout') }}</a></li>
+                @endif
             </ul>
         </div>
 

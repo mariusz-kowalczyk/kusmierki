@@ -1,0 +1,17 @@
+{
+    "client_id": "12345678901234567890",
+    "title": "Moja testowa aplikacja",
+    "description": "Aplikacja testująca GGAPI PHP",
+    "version": "1.0",
+    "icon": "icon.png",
+    "scope": ["pubdir", "users"],
+    "platform": {
+        "web": {
+            "url": "http://example.com/moja_aplikacja/index.php?source=gg.pl"
+            }
+        },
+        "desktop": {
+            "url": "http://example.com/moja_aplikacja/index.php?source=gg11",
+            "size": "narrow"
+            }
+        }
